@@ -1,0 +1,7 @@
+{
+  "name": "IonicWeekPlanner",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
