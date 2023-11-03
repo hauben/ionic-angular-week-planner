@@ -1,29 +1,46 @@
-<ion-header [translucent]="true">
 
-</ion-header>
 
-<ion-content [fullscreen]="true">
-
-  <div *ngIf="!showTodoList" id="container">
-    <div class="sky">
-  
-      <div class="hex-grid">
-  
-        <!-- Generate the first 50 hexagons- 6 in the first row and then 5 in the row below -->
-        <div *ngFor="let i of divCountRows">
-            <div *ngIf="i % 2 !== 0; else evenLabel" class="hex-row">   
-                <div (click)="selectWeek($event)" *ngFor="let a of divCountColumnsTop"  class="hex"><span class="hex-number">{{getWeekNumber()}}</span></div>
-            </div>
-            <ng-template #evenLabel>
-              <div class="hex-row">
-                <div (click)="selectWeek($event)" *ngFor="let a of divCountColumnsBottom"  class="hex"><span class="hex-number">{{getWeekNumber()}}</span> </div>
-              </div>
-            </ng-template>
+<ion-content>
+    {{getCurrentCalendarWeek()}}
+      <div *ngIf="!showTodoList"class="hex-container">
+        <div (click)="showAboutPage()" class="bottom-hexagon"><div class="hex-text">?!</div></div>
+       
+        <div class="hex-row">
+            <div class="hexagon" [ngClass]="{'currentCalendarWeek': isCurrentCalendarWeek(i)}" *ngFor="let i of [1,2,3,4]" (click)="selectWeek(i)"><div class="hex-text">{{i}}</div></div>
         </div>
-      </div>
+
+        <div class="hex-row">
+            <div class="hexagon" [ngClass]="{'currentCalendarWeek': isCurrentCalendarWeek(i)}" *ngFor="let i of [5,6,7,8,9]" (click)="selectWeek(i)"><div class="hex-text">{{i}}</div></div>
+        </div>
+
+        <div class="hex-row">
+            <div class="hexagon" [ngClass]="{'currentCalendarWeek': isCurrentCalendarWeek(i)}" *ngFor="let i of [10,11,12,13,14,15]" (click)="selectWeek(i)"><div class="hex-text">{{i}}</div></div>
+        </div>
+
+        <div class="hex-row">
+            <div class="hexagon" [ngClass]="{'currentCalendarWeek': isCurrentCalendarWeek(i)}" *ngFor="let i of [16,17,18,19,20,21,22]" (click)="selectWeek(i)"><div class="hex-text">{{i}}</div></div>
+        </div>
+
+        <div class="hex-row">
+            <div class="hexagon" [ngClass]="{'currentCalendarWeek': isCurrentCalendarWeek(i)}" *ngFor="let i of [23,24,25,26,27,28,29,30]" (click)="selectWeek(i)"><div class="hex-text">{{i}}</div></div>
+        </div>
+
+        <div class="hex-row">
+            <div class="hexagon" [ngClass]="{'currentCalendarWeek': isCurrentCalendarWeek(i)}" *ngFor="let i of [31,32,33,34,35,36,37]" (click)="selectWeek(i)"><div class="hex-text">{{i}}</div></div>
+        </div>
+
+        <div class="hex-row">
+            <div class="hexagon" [ngClass]="{'currentCalendarWeek': isCurrentCalendarWeek(i)}" *ngFor="let i of [38,39,40,41,42,43]" (click)="selectWeek(i)"><div class="hex-text">{{i}}</div></div>
+        </div>
+
+        <div class="hex-row">
+            <div class="hexagon" [ngClass]="{'currentCalendarWeek': isCurrentCalendarWeek(i)}" *ngFor="let i of [44,45,46,47,48]" (click)="selectWeek(i)"><div class="hex-text">{{i}}</div></div>
+        </div>
+        <div class="hex-row">
+            <div class="hexagon" [ngClass]="{'currentCalendarWeek': isCurrentCalendarWeek(i)}" *ngFor="let i of [49,50,51,52]" (click)="selectWeek(i)"><div class="hex-text">{{i}}</div></div>
+        </div>
     </div>
-  </div>
-   
+
   <ion-button *ngIf="showTodoList" (click)="showCalendarWeeks()">Back to Year Overview</ion-button>
 
   <app-todo-list

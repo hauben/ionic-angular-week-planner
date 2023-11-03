@@ -1,0 +1,68 @@
+ion-content {
+    --background: rgb(0,0,0);
+    --background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(62,62,62,1) 50%, rgba(0,0,0,1) 100%);
+    --padding-top:10vh;
+}
+
+.about-card {
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: rgb(49, 49, 49);
+    color: white;
+  }
+  
+.app-icon {
+    font-size: 5rem;
+    margin: 1rem auto;
+}
+
+.title {
+    color: rgb(255, 166, 0);
+}
+
+.subtitle {
+    color:#d6d5d5
+}
+
+.version-number, .back-button {
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(209, 138, 5);
+    padding: 0.2rem 0.5rem;
+    color: #ffffff; 
+}
+
+.version-number {
+    right: 0;
+}
+
+.back-button {
+    left: 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.icon {
+    font-size:48px;
+    color:  rgb(209, 138, 5);
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.icon-back {
+    font-size:32px;
+    color:  white;
+    position: absolute;
+    left: 15px;
+    bottom: 0px;
+}
+
+.icon-back:hover {
+    cursor: pointer;
+}
+
+.text-content {
+    margin-bottom: 3em;
+}

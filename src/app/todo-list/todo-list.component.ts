@@ -4,6 +4,8 @@ import { fadeAnimation } from '../animations'; // Import the animation
 import { CommonModule } from '@angular/common';
 import { IonButton, IonInput, IonContent, IonList, IonLabel, IonItem, IonCheckbox } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { Storage } from '@ionic/storage-angular';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-todo-list',
@@ -23,7 +25,7 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 })
 export class TodoListComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private storage: Storage, private cdr: ChangeDetectorRef) { }
 
   @Input() year: number = 2023;
   @Input() week: number | undefined;
@@ -32,11 +34,13 @@ export class TodoListComponent  implements OnInit {
   errorMessage: string = '';
   localStorageKey: string = ""
 
-  ngOnInit() {
+  async ngOnInit() {
     // Define a localStorage key to identify todos for each calendar week
     this.localStorageKey = `todos_${this.year}_${this.week}`;
    
-    // Load saved todos when the component initializes
+    await this.storage.create();
+
+    // Load saved todos for the specified calendar week when the component initializes
     this.loadSavedTodos();
   }
 
@@ -80,18 +84,20 @@ export class TodoListComponent  implements OnInit {
     this.saveTodos();
   }
 
-  private saveTodos() {
-    // Save the list of todos to localStorage
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.tasks));
+  private async saveTodos() {
+    // Save the list of todos to ionic storage
+    await this.storage.set(this.localStorageKey, JSON.stringify(this.tasks));
   }
 
-  private loadSavedTodos() {
+  private async loadSavedTodos() {
     
-    // Load saved todos from localStorage
-    const savedTodos = localStorage.getItem(this.localStorageKey);
-    if (savedTodos) {
-      this.tasks = JSON.parse(savedTodos);
+    const todosForCalendarWeek = await this.storage.get(this.localStorageKey);
+
+    if (todosForCalendarWeek) {
+      this.tasks = JSON.parse(todosForCalendarWeek);
     }
+
+    this.cdr.detectChanges();  // manually trigger change detection
   }
    
 }

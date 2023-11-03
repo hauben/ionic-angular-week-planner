@@ -1,0 +1,21 @@
+<ion-content class="ion-padding">
+ 
+  <ion-card class="about-card">
+
+    <ion-card-header>
+      <ion-card-title class="title">{{appName}}</ion-card-title>
+      <ion-card-subtitle class="subtitle">{{appSubtitle}}</ion-card-subtitle>
+      <ion-icon class="icon" name="information-circle-outline"></ion-icon>
+    </ion-card-header>
+    
+    <ion-card-content class="text-content">
+      Just a small calendar app (yet another) which hopes to help
+      you keeping track on your desired activities through out the year.
+    </ion-card-content>
+
+    <ion-icon (click)="backButtonClicked()" class="icon-back" name="return-down-back-outline"></ion-icon> 
+    <div class="version-number">{{ appVersion }}</div>
+  
+  </ion-card>
+</ion-content>
+

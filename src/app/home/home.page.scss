@@ -1,45 +1,14 @@
-.current-week {
-  background-color: #007bff !important; /* Highlight color for the current week */
-  color: #fff; /* Text color for the current week */
-  font-weight: bold; /* Bold font for the current week */
+
+
+
+ion-content {
+  --background: rgb(0,0,0);
+  --background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(62,62,62,1) 50%, rgba(0,0,0,1) 100%);
+  --padding-top:5vh;
 }
 
 
-
-/* Add responsive grid layout */
-.calendar-view {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(100px, 10em));;
-  grid-gap: 10px;
-  background-color: #fff;
-  color: #444;
-}
-
-/* Style individual calendar items as needed */
-.calendar-item {
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
-}
-
-.calendar-item:hover {
-  cursor: pointer;
-}
-
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-size: 400% 400%;
-}
-
-
-.hex-grid {
-  margin-top: 1em;
+.hex-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,51 +17,46 @@ body {
 .hex-row {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  margin-bottom:-23px; /* Increase the margin between rows */
+  margin-bottom: -20px;
 }
 
-.hex {
-  position: relative; /* Position the number relative to the hexagon */
-  width: 70px; /* Adjust the size of your hexagons */
-  height: 85px; /* Adjust the size of your hexagons */
-  background-color: rgb(255, 166, 0); 
+.hexagon {
+  width: 80px;
+  height: 90px;
+  background-color: rgb(255, 166, 0);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  margin: 4px; /* Adjust the spacing between hexagons */
-  cursor: pointer; /* Change cursor to pointer when hovering */
-  transition: transform 0.2s ease-in-out; /* Add transition for smooth scaling */
+  margin: 0 2px;
+  position: relative;
 }
 
-.hex-number {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Inconsolata', monospace; /* Use a monospaced font for a hacker-style look */
-  font-size: 24px; /* Adjust the font size as needed */
-  color: white; /* Bright green color for a classic hacker aesthetic */
-  letter-spacing: 1px; /* Add some letter spacing for a tech feel */
-  font-size: 2em; /* Font size of the number */
-  cursor:default;
-}
-
-
-.hex:hover {
+.hexagon:hover {
   transform: scale(1.4); /* Scale the hexagon on hover */
   background-color: rgba(46, 46, 46, 1); /* Change the background color on hover */
   z-index: 1;
 }
 
-.invisible {
-visibility: hidden;
+
+.hex-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
 }
 
-.container {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, #020202 0%, #131b31 100%);
+.currentCalendarWeek {
+  background-color: red;
 }
 
-
+.bottom-hexagon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 50px;
+  height: 58px;
+  background-color: #e74c3c;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
