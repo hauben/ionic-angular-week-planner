@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { Storage } from '@ionic/storage-angular';
 import { ChangeDetectorRef } from '@angular/core';
 
+import  {CwUpDownComponent} from '../cw-up-down/cw-up-down.component';
+
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -21,7 +23,8 @@ import { ChangeDetectorRef } from '@angular/core';
             IonInput, 
             IonItem, 
             IonCheckbox,
-            FormsModule],
+            FormsModule,
+            CwUpDownComponent],
 })
 export class TodoListComponent  implements OnInit {
 
@@ -43,6 +46,9 @@ export class TodoListComponent  implements OnInit {
     // Load saved todos for the specified calendar week when the component initializes
     this.loadSavedTodos();
   }
+
+
+
 
   addTask() {
     if (this.newTaskName.trim() === '') {

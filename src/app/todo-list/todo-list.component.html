@@ -1,5 +1,5 @@
 <div class="todo-list">
-  <h2>Todo's for {{week}}/{{year}}</h2>
+  <cw-up-down [week]="week"></cw-up-down>
 
   <div class="error-message" *ngIf="errorMessage">
     {{ errorMessage }}

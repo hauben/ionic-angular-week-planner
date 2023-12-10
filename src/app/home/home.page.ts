@@ -5,19 +5,26 @@ import { ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import  {TodoListComponent} from '../todo-list/todo-list.component';
 
-import { IonButton } from '@ionic/angular/standalone';
+import { IonFabButton } from '@ionic/angular/standalone';
+import { IonIcon } from '@ionic/angular/standalone';
+import { IonFab } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
+
+import { returnDownBackOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonButton, IonContent, TodoListComponent],
+  imports: [CommonModule, IonContent, TodoListComponent, IonFab, IonFabButton, IonIcon],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePage {
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    addIcons({ returnDownBackOutline });  // workaround to the ion-icons working
+  }
 
   showTodoList: boolean = false;
   selectedYear: number = 2023; 
