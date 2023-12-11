@@ -8,6 +8,7 @@ import { Storage } from '@ionic/storage-angular';
 import { ChangeDetectorRef } from '@angular/core';
 
 import  {CwUpDownComponent} from '../cw-up-down/cw-up-down.component';
+import  {TodoListTableView} from '../todo-list-table-view/todo-list-table-view.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -24,7 +25,9 @@ import  {CwUpDownComponent} from '../cw-up-down/cw-up-down.component';
             IonItem, 
             IonCheckbox,
             FormsModule,
-            CwUpDownComponent],
+            CwUpDownComponent,
+            TodoListTableView
+          ],
 })
 export class TodoListComponent  implements OnInit {
 

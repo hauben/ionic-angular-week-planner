@@ -1,0 +1,32 @@
+.item-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .checkbox {
+    margin-right: 10px;
+  }
+  
+  .circle-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #007bff; /* You can customize the color */
+    margin-right: 10px;
+  }
+  
+  .title {
+    flex-grow: 1;
+  }
+
+  .icon-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    cursor: pointer;
+    margin-left: 10px;
+  }

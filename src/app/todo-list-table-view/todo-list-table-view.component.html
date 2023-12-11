@@ -1,0 +1,33 @@
+
+<mat-tab-group>
+  <mat-tab label="Tab A">
+    <ng-template mat-tab-label>
+      <mat-icon>list_alt</mat-icon>
+      ALL
+    </ng-template>
+    <div>
+      <app-item title="Item 1"></app-item>
+      <app-item title="Item 2"></app-item>
+      <app-item title="Item 3"></app-item>
+      <!-- Add more items as needed -->
+    </div>
+  </mat-tab>
+
+  <!-- Tab B -->
+  <mat-tab label="Tab B">
+    <ng-template mat-tab-label>
+      <mat-icon>check_box_outline_blank</mat-icon>
+      OPEN
+    </ng-template>
+    Content for Tab B
+  </mat-tab>
+
+  <!-- Tab C -->
+  <mat-tab label="Tab C">
+    <ng-template mat-tab-label>
+      <mat-icon>check_box</mat-icon>
+      DONE
+    </ng-template>
+    Content for Tab C
+  </mat-tab>
+</mat-tab-group>

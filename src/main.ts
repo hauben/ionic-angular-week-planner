@@ -7,6 +7,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 if (environment.production) {
   enableProdMode();
@@ -18,5 +19,6 @@ bootstrapApplication(AppComponent, {
     provideIonicAngular(),
     provideRouter(routes),
     importProvidersFrom(IonicStorageModule.forRoot()),
-  ],
+    provideAnimations()
+],
 });

@@ -17,6 +17,7 @@ export class CwUpDownComponent  implements OnInit {
   }
 
   downWeek() {
+    console.log("down")
    if (this.week) {
       if (this.week>=2) {
         this.week = this.week - 1;
