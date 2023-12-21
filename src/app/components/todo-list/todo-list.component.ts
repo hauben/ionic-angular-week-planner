@@ -1,14 +1,61 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { TodoTask } from '../todo-task.model';
-import { fadeAnimation } from '../animations'; // Import the animation
+import { Component, Input, OnInit, Output, EventEmitter, Inject } from '@angular/core';
+import { TodoTask } from '../../todo-task.model';
+import { fadeAnimation } from '../../animations'; // Import the animation
 import { CommonModule } from '@angular/common';
 import { IonButton, IonInput, IonContent, IonList, IonLabel, IonItem, IonCheckbox } from '@ionic/angular/standalone';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+
 import { Storage } from '@ionic/storage-angular';
 import { ChangeDetectorRef } from '@angular/core';
 
 import  {CwUpDownComponent} from '../cw-up-down/cw-up-down.component';
 import  {TodoListTableView} from '../todo-list-table-view/todo-list-table-view.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
+import {FormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogModule,
+} from '@angular/material/dialog';
+
+
+
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dialog-overview-example-dialog.html',
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule
+  ],
+})
+export class DialogOverviewExampleDialog {
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
 
 @Component({
   selector: 'app-todo-list',
@@ -26,12 +73,19 @@ import  {TodoListTableView} from '../todo-list-table-view/todo-list-table-view.c
             IonCheckbox,
             FormsModule,
             CwUpDownComponent,
-            TodoListTableView
+            TodoListTableView,
+            MatButtonModule,
+            MatIconModule,
+            MatDialogModule
           ],
 })
 export class TodoListComponent  implements OnInit {
+  animal: string = "";
+  name: string = "";
 
-  constructor(private storage: Storage, private cdr: ChangeDetectorRef) { }
+  @Output() messageEvent = new EventEmitter<string>();
+
+  constructor(private storage: Storage, private cdr: ChangeDetectorRef, public dialog: MatDialog) { }
 
   @Input() year: number = 2023;
   @Input() week: number | undefined;
@@ -108,5 +162,24 @@ export class TodoListComponent  implements OnInit {
 
     this.cdr.detectChanges();  // manually trigger change detection
   }
+
+  backToMainClicked() {
+   console.log("back to main clicked");
+   this.messageEvent.emit('back_to_main_clicked');
+  }
+
+  showAddTodoDialog() {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      height: '700px',
+      width: '600px',
+      data: {name: this.name, animal: this.animal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+  
    
 }

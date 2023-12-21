@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import  {TimeDisplayComponent} from '../time-display/time-display.component';
 
 @Component({
   selector: 'app-item',
@@ -9,21 +10,28 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./todo-list-item.component.scss'],
   imports: [MatCheckboxModule, 
             MatIconModule,
+            TimeDisplayComponent,
   ]
 })
 export class TodoListItemComponent {
   @Input() title: string = '';
   isChecked: boolean = false;
+  elapsed_hours: string = "01"
+  elapsed_minutes: string = "00"
+  elapsed_seconds: string = "00"
+  goal_hours: string = "02"
+  goal_minutes: string = "00"
+  goal_seconds: string = "00"
 
   delete() {
-    throw new Error('Method not implemented.');
+    console.log("delete clicked");
   }
 
   edit() {
-    throw new Error('Method not implemented.');
+    console.log("edit clicked");
   }
 
   play() {
-    throw new Error('Method not implemented.');
+    console.log("play clicked");
   }
 }

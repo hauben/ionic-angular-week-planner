@@ -41,18 +41,11 @@
         </div>
     </div>
 
-    <ion-fab *ngIf="showTodoList" (click)="showCalendarWeeks()">
-        <ion-fab-button>
-            <ion-icon class="icon-back" name="return-down-back-outline"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
-
-  <!--<ion-button *ngIf="showTodoList" (click)="showCalendarWeeks()">Back to Year Overview</ion-button>-->
-
   <app-todo-list
     *ngIf="showTodoList"
     [year]="selectedYear"
     [week]="selectedWeek"
+    (messageEvent)="receiveMessage($event)"
   ></app-todo-list>
 
 </ion-content>

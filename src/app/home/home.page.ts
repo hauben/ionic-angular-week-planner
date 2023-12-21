@@ -3,7 +3,7 @@ import { IonContent } from '@ionic/angular/standalone';
 import { getISOWeek} from 'date-fns';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import  {TodoListComponent} from '../todo-list/todo-list.component';
+import  {TodoListComponent} from '../components/todo-list/todo-list.component';
 
 import { IonFabButton } from '@ionic/angular/standalone';
 import { IonIcon } from '@ionic/angular/standalone';
@@ -66,7 +66,9 @@ export class HomePage {
   }
 
 
-
+  receiveMessage(message: string) {
+    this.showCalendarWeeks();
+  }
 
 
 

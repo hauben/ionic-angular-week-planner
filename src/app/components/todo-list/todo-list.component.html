@@ -1,4 +1,7 @@
 <div class="todo-list">
+  <div (click)="backToMainClicked()"  class="back_to_main">
+    <mat-icon>arrow_back_ios_new</mat-icon>
+  </div>
   <cw-up-down [week]="week"></cw-up-down>
   <todo-list-table-view></todo-list-table-view>
  
@@ -27,5 +30,10 @@
         <ion-button (click)="removeTask(i)">Delete</ion-button>
     </ion-item>
   </ion-list>-->
-
 </div>
+<div class="add_todo">
+  <button (click)="showAddTodoDialog()" mat-fab>
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
