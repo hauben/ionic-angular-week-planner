@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule} from '@angular/material/form-field';
@@ -18,6 +18,8 @@ import  {TimeDisplayComponent} from '../time-display/time-display.component';
 export class TodoListItemComponent {
 
   @Input() title: string = '';
+  @Output() deleteItem = new EventEmitter<void>();
+
   isChecked: boolean = false;
   elapsed_hours: string = "01"
   elapsed_minutes: string = "00"
@@ -30,6 +32,7 @@ export class TodoListItemComponent {
 
   delete() {
     console.log("delete clicked");
+    this.deleteItem.emit();
   }
 
   edit() {
