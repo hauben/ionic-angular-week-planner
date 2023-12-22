@@ -1,7 +1,10 @@
 <div class="item-container">
-  <mat-checkbox class="checkbox"></mat-checkbox>
+  <mat-checkbox class="checkbox" (change)="onTodoChecked($event)"></mat-checkbox>
   <div class="circle-icon mat-elevation-z2"></div>
-  <div class="title">{{ title }}</div>
+  
+  <div>
+    <input matInput [value]="title" [disabled]="isInputFieldDisabled">
+  </div>
 
   <time-display
     [hours1]="elapsed_hours"
@@ -13,8 +16,8 @@
   ></time-display>
 
   <div class="icon-container">
-    <mat-icon class="icon" (click)="play()">play_arrow</mat-icon>
-    <mat-icon class="icon" (click)="edit()">edit</mat-icon>
+    <mat-icon class="icon" (click)="play()">{{ isTimeRunning ? 'stop' : 'play_arrow' }} </mat-icon>
+    <mat-icon class="icon" (click)="edit()"> {{ isInputFieldDisabled ? 'edit' : 'save' }}</mat-icon>
     <mat-icon class="icon" (click)="delete()">delete</mat-icon>
   </div>
 
