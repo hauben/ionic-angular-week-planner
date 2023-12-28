@@ -1,4 +1,40 @@
 <div class="add-todo-dialog">
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button >Ok</button>
+ 
+  <div class="top_row_container">
+    <mat-icon (click)="onBackClick()">close</mat-icon>
+    <mat-icon (click)="onSaveClick()">save</mat-icon>
+  </div>
+
+  <span class="headline">Add Todo For The Week {{isDurationSelected}}</span> 
+  
+  <div class="duration-container">
+    <div class="title">Choose Duration Based...</div>
+    <div class="radio-buttons">
+      <mat-radio-group [value]="isDurationSelected"  (change)="onGroupChange($event)">
+        <mat-radio-button [value]="1">Yes</mat-radio-button>
+        <mat-radio-button [value]="0">No</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div *ngIf="isDurationSelected === 1" class="time-goal-container">
+    <div class="title">Add A Time Goal</div>
+    <div class="time-inputs">
+      <input type="number" matInput [value]="hours_goal" placeholder="Hours">
+      <span>:</span>
+      <input type="number" matInput [value]="minutes_goal" placeholder="Minutes">
+    </div>
+  </div>
+
+  <div class="color-assignment-container">
+      <div class="title">Assign A Color</div>
+      <div class="color-circles">
+        <div class="color-circle blue" (click)="selectColor('blue')" [class.selected]="selectedColor === 'blue'"></div>
+        <div class="color-circle black" (click)="selectColor('black')" [class.selected]="selectedColor === 'black'"></div>
+        <div class="color-circle green" (click)="selectColor('green')" [class.selected]="selectedColor === 'green'"></div>
+        <div class="color-circle yellow" (click)="selectColor('yellow')" [class.selected]="selectedColor === 'yellow'"></div>
+        <div class="color-circle red" (click)="selectColor('red')" [class.selected]="selectedColor === 'red'"></div>
+        <div class="color-circle white" (click)="selectColor('white')" [class.selected]="selectedColor === 'white'"></div>
+      </div> 
+  </div>
 </div>    

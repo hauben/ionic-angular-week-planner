@@ -1,0 +1,84 @@
+.add-todo-dialog {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #4d4d4d;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .top_row_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .headline {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5em;
+  }
+
+  .color-assignment-container {
+    width: 100%;
+    padding: 10px; 
+    border-top: 1px solid #ffffff; /* Add a top border */
+    border-bottom: 1px solid #ffffff; /* Add a bottom border */
+  }
+  
+  .title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.0em;
+    text-align: left !important;
+    margin-bottom: 1em;
+  }
+  
+  .color-circles {
+    display: flex;
+    gap: 10px; /* Adjust the gap between circles as needed */
+  }
+  
+  .color-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  .blue { background-color: blue; }
+  .black { background-color: black; }
+  .green { background-color: green; }
+  .yellow { background-color: yellow; }
+  .red { background-color: red; }
+  .white { background-color: white; }
+
+  .selected {
+    border: 3px solid #333; /* Add a border to indicate selection */
+  }
+  
+
+
+  .time-goal-container {
+    width: 100%;
+    padding: 20px; /* Adjust the padding as needed */
+    border-top: 1px solid #ffffff; /* Add a top border */
+    margin-top: 20px; /* Adjust the margin as needed */
+  }
+  
+
+  
+  .time-inputs {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Adjust the gap between inputs as needed */
+  }
+  
+  .time-inputs input {
+    width: 50px; /* Adjust the input width as needed */
+    padding: 5px; /* Adjust the input padding as needed */
+    text-align: center;
+  }
+
+  .radio-buttons {
+    text-align: left;
+  }

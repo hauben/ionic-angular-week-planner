@@ -135,7 +135,7 @@ export class TodoListComponent  implements OnInit {
 
   showAddTodoDialog() {
     const dialogRef = this.dialog.open(AddTodoDialogComponent, {
-      height: '700px',
+      height: '720px',
       width: '600px',
       data: {name: this.name, animal: this.animal},
     });
