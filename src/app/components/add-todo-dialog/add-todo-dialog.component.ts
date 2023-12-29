@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatRadioChange } from '@angular/material/radio';
+import { MatRadioModule, MatRadioChange } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 import { ChangeDetectorRef } from '@angular/core';
 
 import {
@@ -32,7 +32,8 @@ export interface DialogData {
     MatButtonModule,
     MatIconModule,
     CommonModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSelectModule
   ],
 })
 export class AddTodoDialogComponent {
@@ -40,6 +41,7 @@ export class AddTodoDialogComponent {
   @Input() hours_goal: Number = 0;
   @Input() minutes_goal: Number = 0;
   @Input() isDurationSelected : number | null = 0;
+  @Input() newActivity : String | null = "";
 
   constructor(
     public dialogRef: MatDialogRef<AddTodoDialogComponent>,

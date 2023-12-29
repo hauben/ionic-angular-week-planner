@@ -20,11 +20,15 @@
     font-size: 1.5em;
   }
 
-  .color-assignment-container {
+  .color-assignment-container, .duration-container, .activity-container {
     width: 100%;
     padding: 10px; 
     border-top: 1px solid #ffffff; /* Add a top border */
     border-bottom: 1px solid #ffffff; /* Add a bottom border */
+  }
+
+  .activity-container {
+    text-align: left;
   }
   
   .title {
