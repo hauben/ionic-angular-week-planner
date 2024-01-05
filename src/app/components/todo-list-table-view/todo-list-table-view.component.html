@@ -7,7 +7,7 @@
     </ng-template>
     <div>
       <div *ngFor="let todo of todo_items">
-          <todo-item [title]="todo" (deleteItem)="onDeleteItem(todo)"></todo-item>
+          <todo-item [title]="todo.name" (deleteItem)="onDeleteItem(todo.id)"></todo-item>
       </div>
     </div>
   </mat-tab>

@@ -18,11 +18,19 @@
   .headline {
     font-family: 'Raleway', sans-serif;
     font-size: 1.5em;
+    margin-bottom: 1em;
   }
 
   .color-assignment-container, .duration-container, .activity-container {
     width: 100%;
     padding: 10px; 
+  }
+
+  .color-assignment-container {
+    margin-top: 1em;
+  }
+  
+  .color-assignment-container, .duration-container {
     border-top: 1px solid #ffffff; /* Add a top border */
     border-bottom: 1px solid #ffffff; /* Add a bottom border */
   }
@@ -64,9 +72,9 @@
 
   .time-goal-container {
     width: 100%;
-    padding: 20px; /* Adjust the padding as needed */
-    border-top: 1px solid #ffffff; /* Add a top border */
-    margin-top: 20px; /* Adjust the margin as needed */
+    margin-top: 20px; 
+    padding-bottom: 10px; 
+    padding-left: 10px; 
   }
   
 
