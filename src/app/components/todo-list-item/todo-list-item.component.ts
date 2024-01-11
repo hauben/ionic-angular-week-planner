@@ -1,8 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import  {TimeDisplayComponent} from '../time-display/time-display.component';
+
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'todo-item',
@@ -12,13 +15,31 @@ import  {TimeDisplayComponent} from '../time-display/time-display.component';
   imports: [MatCheckboxModule, 
             MatIconModule,
             TimeDisplayComponent,
-            MatFormFieldModule
+            MatFormFieldModule,
+            ReactiveFormsModule
   ]
 })
-export class TodoListItemComponent {
+export class TodoListItemComponent implements OnInit {
 
   @Input() title: string = '';
+  @Input() id: number = -1;
+  @Input() isInputFieldDisabled: boolean = true;
+
   @Output() deleteItem = new EventEmitter<void>();
+  @Output() nameOfTodoChanged: EventEmitter<{ id: number, value: string }> = new EventEmitter();
+ 
+
+  // Form group and form control
+  reactiveForm!: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    // Initialize the form group with an input field
+    this.reactiveForm = this.fb.group({
+      userInput: [{ value: this.title, disabled: this.isInputFieldDisabled }]
+    });
+  }
 
   isChecked: boolean = false;
   elapsed_hours: string = "01"
@@ -27,20 +48,37 @@ export class TodoListItemComponent {
   goal_hours: string = "02"
   goal_minutes: string = "00"
   goal_seconds: string = "00"
-  isInputFieldDisabled: boolean = true;
+
   isTimeRunning: boolean = false;
 
+  // Getter for easy access to the form control
+  get userInputControl() {
+     return this.reactiveForm.get('userInput');
+  }
+
   delete() {
-    console.log("delete clicked");
     this.deleteItem.emit();
   }
 
-  edit() {
-    console.log("edit clicked");
+  // Toggle the disabled state of the input field
+  toggleEdit() {
+    const currentStatus = this.userInputControl?.disabled;
 
-    if (!this.isInputFieldDisabled) {
-      // TODO SAVE
-      console.log("save");
+    if (currentStatus) {
+      this.userInputControl?.enable();
+    } else {
+      this.userInputControl?.disable();
+    }
+  }
+
+  edit() {
+    this.toggleEdit();
+
+    if (!this.isInputFieldDisabled) {  // save was clicked
+      const id = this.id;
+      const value = this.userInputControl?.value;
+
+      this.nameOfTodoChanged.emit({id, value});
     }
 
     // finally trigger the icon change
@@ -55,7 +93,5 @@ export class TodoListItemComponent {
 
   onTodoChecked(event: MatCheckboxChange) {
     console.log("todo checked "+event.checked);
-
-
   }
 }

@@ -2,9 +2,10 @@
   <mat-checkbox class="checkbox" (change)="onTodoChecked($event)"></mat-checkbox>
   <div class="circle-icon mat-elevation-z2"></div>
   
-  <div>
-    <input class="todo_input_field" matInput [value]="title" [disabled]="isInputFieldDisabled">
-  </div>
+
+  <form [formGroup]="reactiveForm">
+        <input class="todo_input_field" matInput [value]="title" formControlName="userInput">
+  </form>
 
   <time-display
     [hours1]="elapsed_hours"

@@ -49,6 +49,19 @@ export class IonicStorageService {
     await this.saveTodoItemsToStorage(updatedTodos);
   }
 
+  async updateTodoItemById(itemId: number, updatedData: Partial<TodoItem>) {
+    const currentItems = this.todo_itemsSubject.value;
+    const updatedItems = currentItems.map((item) => {
+      if (item.id === itemId) {
+        return { ...item, ...updatedData };
+      } else {
+        return item;
+      }
+    });
+
+    this.todo_itemsSubject.next(updatedItems);
+    await this.saveTodoItemsToStorage(updatedItems);
+  }
 
   private async saveTodoItemsToStorage(items: TodoItem[]) {
     try {

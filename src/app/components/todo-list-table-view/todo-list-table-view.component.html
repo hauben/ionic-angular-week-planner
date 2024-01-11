@@ -7,9 +7,10 @@
     </ng-template>
     <div>
       <div *ngFor="let todo of todo_items">
-          <todo-item [title]="todo.name" (deleteItem)="onDeleteItem(todo.id)"></todo-item>
+          <todo-item [id]="todo.id" [title]="todo.name" (deleteItem)="onDeleteItem(todo.id)"  (nameOfTodoChanged)="onNameOfTodoChanged($event)"></todo-item>
       </div>
     </div>
+    <ng-template #loadingItems>Loading items...</ng-template>
   </mat-tab>
 
   <!-- Tab B -->
