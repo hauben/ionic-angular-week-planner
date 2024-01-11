@@ -7,7 +7,12 @@
     </ng-template>
     <div>
       <div *ngFor="let todo of todo_items">
-          <todo-item [id]="todo.id" [title]="todo.name" (deleteItem)="onDeleteItem(todo.id)"  (nameOfTodoChanged)="onNameOfTodoChanged($event)"></todo-item>
+          <todo-item [id]="todo.id" 
+                     [title]="todo.name" 
+                     [isChecked]="todo.isDone" 
+                     (deleteItem)="onDeleteItem(todo.id)"  
+                     (nameOfTodoChanged)="onNameOfTodoChanged($event)"
+                     (statusOfTodoChanged)="onStatusOfTodoChanged($event)"></todo-item>
       </div>
     </div>
     <ng-template #loadingItems>Loading items...</ng-template>

@@ -24,9 +24,11 @@ export class TodoListItemComponent implements OnInit {
   @Input() title: string = '';
   @Input() id: number = -1;
   @Input() isInputFieldDisabled: boolean = true;
+  @Input() isChecked: boolean = false;
 
   @Output() deleteItem = new EventEmitter<void>();
   @Output() nameOfTodoChanged: EventEmitter<{ id: number, value: string }> = new EventEmitter();
+  @Output() statusOfTodoChanged: EventEmitter<{ id: number, checked: boolean }> = new EventEmitter();
  
 
   // Form group and form control
@@ -41,7 +43,7 @@ export class TodoListItemComponent implements OnInit {
     });
   }
 
-  isChecked: boolean = false;
+  
   elapsed_hours: string = "01"
   elapsed_minutes: string = "00"
   elapsed_seconds: string = "00"
@@ -92,6 +94,9 @@ export class TodoListItemComponent implements OnInit {
   }
 
   onTodoChecked(event: MatCheckboxChange) {
-    console.log("todo checked "+event.checked);
+    const id = this.id;
+    const checked = event.checked;
+
+    this.statusOfTodoChanged.emit({id, checked});
   }
 }

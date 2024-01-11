@@ -1,5 +1,9 @@
 <div class="item-container">
-  <mat-checkbox class="checkbox" (change)="onTodoChecked($event)"></mat-checkbox>
+  <mat-checkbox 
+      class="checkbox" 
+      (change)="onTodoChecked($event)"
+      [checked]="isChecked"
+  ></mat-checkbox>
   <div class="circle-icon mat-elevation-z2"></div>
   
 

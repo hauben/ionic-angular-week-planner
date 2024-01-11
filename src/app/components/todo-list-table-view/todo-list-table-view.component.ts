@@ -52,4 +52,8 @@ export class TodoListTableView implements OnInit {
     // update the storage item with the new title
     this.ionicStorageService.updateTodoItemById(eventData.id, { name: eventData.value });
   }
+
+  onStatusOfTodoChanged(eventData: {id: number, checked: boolean }) {
+      this.ionicStorageService.updateTodoItemById(eventData.id, { isDone: eventData.checked });
+  }
 }
