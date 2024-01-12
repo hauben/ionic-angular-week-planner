@@ -1,5 +1,6 @@
 
 <mat-tab-group>
+  <!-- Tab A ALL Todos -->
   <mat-tab label="Tab A">
     <ng-template mat-tab-label>
       <mat-icon>list_alt</mat-icon>
@@ -18,21 +19,40 @@
     <ng-template #loadingItems>Loading items...</ng-template>
   </mat-tab>
 
-  <!-- Tab B -->
+  <!-- Tab B OPEN Todos -->
   <mat-tab label="Tab B">
     <ng-template mat-tab-label>
       <mat-icon>check_box_outline_blank</mat-icon>
       OPEN
     </ng-template>
-    Content for Tab B
+    <div *ngFor="let todo of todo_items">
+        <div *ngIf="!todo.isDone">
+          <todo-item [id]="todo.id" 
+                    [title]="todo.name" 
+                    [isChecked]="todo.isDone" 
+                    (deleteItem)="onDeleteItem(todo.id)"  
+                    (nameOfTodoChanged)="onNameOfTodoChanged($event)"
+                    (statusOfTodoChanged)="onStatusOfTodoChanged($event)"></todo-item>
+        </div>
+    </div>
+    
   </mat-tab>
 
-  <!-- Tab C -->
+  <!-- Tab C DONE Todos -->
   <mat-tab label="Tab C">
     <ng-template mat-tab-label>
       <mat-icon>check_box</mat-icon>
       DONE
     </ng-template>
-    Content for Tab C
+    <div *ngFor="let todo of todo_items">
+      <div *ngIf="todo.isDone">
+        <todo-item [id]="todo.id" 
+                  [title]="todo.name" 
+                  [isChecked]="todo.isDone" 
+                  (deleteItem)="onDeleteItem(todo.id)"  
+                  (nameOfTodoChanged)="onNameOfTodoChanged($event)"
+                  (statusOfTodoChanged)="onStatusOfTodoChanged($event)"></todo-item>
+      </div>
+    </div>
   </mat-tab>
 </mat-tab-group>

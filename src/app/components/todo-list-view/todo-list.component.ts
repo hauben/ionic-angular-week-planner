@@ -68,7 +68,7 @@ export class TodoListComponent  implements OnInit {
 
   showAddTodoDialog() {
    
-    const newTodo: TodoItem = { 
+   /* const newTodo: TodoItem = { 
         id: Date.now(), 
         name: "MyName"+Math.floor(Math.random() * 1000),
         color: "blue",
@@ -76,18 +76,15 @@ export class TodoListComponent  implements OnInit {
         calendarWeek: this.week
       };
 
-    this.ionicStorageService.addTodoItem(newTodo);
+    this.ionicStorageService.addTodoItem(newTodo);*/
 
-    /*const dialogRef = this.dialog.open(AddTodoDialogComponent, {
+    const dialogRef = this.dialog.open(AddTodoDialogComponent, {
       height: '720px',
       width: '600px',
-      data: {name: this.name, animal: this.animal},
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });*/
+    });
   
   }
   
