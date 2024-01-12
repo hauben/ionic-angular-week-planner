@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'IonicWeekPlanner',
+  appId: 'de.weekplanner',
+  appName: 'Week Planner',
   webDir: 'www',
   server: {
     androidScheme: 'https'

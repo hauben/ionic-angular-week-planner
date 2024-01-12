@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package de.weekplanner;
 
 import com.getcapacitor.BridgeActivity;
 

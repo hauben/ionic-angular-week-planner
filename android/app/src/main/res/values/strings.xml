@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">IonicWeekPlanner</string>
-    <string name="title_activity_main">IonicWeekPlanner</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="app_name">Week Planner</string>
+    <string name="title_activity_main">Week Planner</string>
+    <string name="package_name">de.weekplanner</string>
+    <string name="custom_url_scheme">de.weekplanner</string>
 </resources>
