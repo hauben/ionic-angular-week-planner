@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'cw-up-down',
@@ -6,36 +6,40 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './cw-up-down.component.html',
   styleUrls: ['./cw-up-down.component.scss'],
 })
-export class CwUpDownComponent  implements OnInit {
+export class CwUpDownComponent {
 
-  @Input() week: number | undefined;
+@Input() week: number | undefined;
+@Output() currentWeekEvent: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
 
-  ngOnInit() {
+publishCurrentWeek() {
+  this.currentWeekEvent.emit(this.week);  // emit the current week
+}
 
-  }
-
-  downWeek() {
-    console.log("down")
-   if (this.week) {
+downWeek() {
+  if (this.week) {
       if (this.week>=2) {
         this.week = this.week - 1;
       }
       else {
         this.week = 52;
       }
-   }
   }
 
-  upWeek() {
+  this.publishCurrentWeek();
+}
+
+upWeek() {
     if (this.week) {
-      if (this.week<=51) {
-        this.week = this.week + 1;
-      }
-      else {
-        this.week = 1;
-      }
-   }
-  }
+        if (this.week<=51) {
+          this.week = this.week + 1;
+        }
+        else {
+          this.week = 1;
+        }
+    }
+
+    this.publishCurrentWeek();
+}
+
 }

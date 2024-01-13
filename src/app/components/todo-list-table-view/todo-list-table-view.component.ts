@@ -1,14 +1,12 @@
-import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { MatTabsModule} from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
-import  {TodoListItemComponent} from '../todo-list-item/todo-list-item.component';
 import { CommonModule } from '@angular/common'; 
+import { filter, map } from 'rxjs/operators';
 
 import { IonicStorageService } from '../../services/todo-storage.service';
-
+import  {TodoListItemComponent} from '../todo-list-item/todo-list-item.component';
 import { TodoItem } from '../../models/todo.model';
-
-import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'todo-list-table-view',
@@ -21,26 +19,35 @@ import { filter, map } from 'rxjs/operators';
             CommonModule
   ] 
 })
-export class TodoListTableView implements OnInit {
+export class TodoListTableView implements OnInit, OnChanges {
 
-  @Input() week: number | undefined;
+  @Input() week: number = 1;
 
-  constructor(private ionicStorageService: IonicStorageService, private cdr: ChangeDetectorRef) { }
+  constructor(private ionicStorageService: IonicStorageService) { }
 
   todo_items: TodoItem[] = [];
 
-  async ngOnInit() {
-
+  async readTodosForWeek(week: number) {
       // filter for todo items only for the current selected calendar week
       this.ionicStorageService.todo_items$
-        .pipe(
-          filter( (todo_items: TodoItem[]) => !!todo_items), // Check if todo_items is not null or undefined
-          map((todo_items: TodoItem[] | undefined) => todo_items?.filter(item => item.calendarWeek === this.week) || [])
-        )
-        .subscribe((filteredTodoItems: TodoItem[]) => {
-          this.todo_items = filteredTodoItems;
-        });
+          .pipe(
+            filter( (todo_items: TodoItem[]) => !!todo_items), // Check if todo_items is not null or undefined
+            map((todo_items: TodoItem[] | undefined) => todo_items?.filter(item => item.calendarWeek === week) || [])
+          )
+          .subscribe((filteredTodoItems: TodoItem[]) => {
+            this.todo_items = filteredTodoItems;
+      });
+  }
 
+  async ngOnInit() {
+    this.readTodosForWeek(this.week);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    const newWeek = changes['week'].currentValue;
+    
+    this.week = newWeek;
+    this.readTodosForWeek(this.week);
   }
 
   onDeleteItem(itemID: number) {

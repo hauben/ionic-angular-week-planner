@@ -2,10 +2,9 @@ import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule} from '@angular/material/form-field';
-import  {TimeDisplayComponent} from '../time-display/time-display.component';
+import { FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import  {TimeDisplayComponent} from '../time-display/time-display.component';
 
 @Component({
   selector: 'todo-item',

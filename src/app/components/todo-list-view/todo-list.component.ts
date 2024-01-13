@@ -1,18 +1,13 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { TodoTask } from '../../todo-task.model';
-import { fadeAnimation } from '../../animations'; // Import the animation
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonButton, IonInput, IonContent, IonList, IonLabel, IonItem, IonCheckbox } from '@ionic/angular/standalone';
-
-import  {CwUpDownComponent} from '../cw-up-down/cw-up-down.component';
-import  {TodoListTableView} from '../todo-list-table-view/todo-list-table-view.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 
-import {FormsModule} from '@angular/forms';
-
-import { IonicStorageService } from '../../services/todo-storage.service';
-
+import { CwUpDownComponent } from '../cw-up-down/cw-up-down.component';
+import  { TodoListTableView } from '../todo-list-table-view/todo-list-table-view.component';
+import { fadeAnimation } from '../../animations'; 
 import { TodoItem } from '../../models/todo.model';
 
 import {
@@ -44,48 +39,35 @@ import { AddTodoDialogComponent } from '../add-todo-dialog/add-todo-dialog.compo
             MatDialogModule
           ],
 })
-export class TodoListComponent  implements OnInit {
+export class TodoListComponent {
   animal: string = "";
   name: string = "";
   todo_items: TodoItem[] = [];
 
   @Output() messageEvent = new EventEmitter<string>();
 
-  constructor(public dialog: MatDialog,
-              private ionicStorageService: IonicStorageService) { }
+  constructor(public dialog: MatDialog, private cdr: ChangeDetectorRef) { }
 
   @Input() year: number = 2023;
   @Input() week: number = 0;
   errorMessage: string = '';
-
-  async ngOnInit() {
-
-  }
 
   backToMainClicked() {
    this.messageEvent.emit('back_to_main_clicked');
   }
 
   showAddTodoDialog() {
-   
-   /* const newTodo: TodoItem = { 
-        id: Date.now(), 
-        name: "MyName"+Math.floor(Math.random() * 1000),
-        color: "blue",
-        isDone: false,
-        calendarWeek: this.week
-      };
+      const dialogRef = this.dialog.open(AddTodoDialogComponent, {
+        height: '720px',
+        width: '600px',
+      });
 
-    this.ionicStorageService.addTodoItem(newTodo);*/
+      dialogRef.afterClosed().subscribe(result => {
+      });
+  }
 
-    const dialogRef = this.dialog.open(AddTodoDialogComponent, {
-      height: '720px',
-      width: '600px',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
-  
+  currentWeekEventReceived(week: number) {
+     this.week = week;
   }
   
 }

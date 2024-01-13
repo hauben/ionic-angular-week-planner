@@ -2,14 +2,13 @@
   <div (click)="backToMainClicked()" class="back_to_main">
     <mat-icon>arrow_back_ios_new</mat-icon>
   </div>
-  <cw-up-down [week]="week"></cw-up-down>
-  <todo-list-table-view [week]="week"></todo-list-table-view>
+  <cw-up-down [week]="week"  (currentWeekEvent)="currentWeekEventReceived($event)"></cw-up-down>
+  <todo-list-table-view [week]="week" ></todo-list-table-view>
  
   <div class="error-message" *ngIf="errorMessage">
     {{ errorMessage }}
   </div>
 </div>
-
 
 <div class="add_todo">
   <button (click)="showAddTodoDialog()" mat-fab>
