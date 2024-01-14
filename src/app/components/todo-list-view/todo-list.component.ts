@@ -60,6 +60,7 @@ export class TodoListComponent {
       const dialogRef = this.dialog.open(AddTodoDialogComponent, {
         height: '720px',
         width: '600px',
+        data: { week: this.week}
       });
 
       dialogRef.afterClosed().subscribe(result => {

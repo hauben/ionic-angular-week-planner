@@ -8,6 +8,10 @@ import { CommonModule } from '@angular/common';
 import { MatRadioModule, MatRadioChange } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
+import { IonicStorageService } from '../../services/todo-storage.service';
+
+
+import { TodoItem } from '../../models/todo.model';
 
 import {
   MAT_DIALOG_DATA,
@@ -16,8 +20,7 @@ import {
 
 
 export interface DialogData {
-  animal: string;
-  name: string;
+  week: number;
 }
 
 @Component({
@@ -36,30 +39,43 @@ export interface DialogData {
     MatSelectModule
   ],
 })
-export class AddTodoDialogComponent {
-  selectedColor: string | null = null;
+export class AddTodoDialogComponent  {
+  selectedColor: string  = "NO COLOR";
   @Input() hours_goal: Number = 0;
   @Input() minutes_goal: Number = 0;
   @Input() isDurationSelected : number | null = 0;
-  @Input() newActivity : String | null = "";
+  @Input() newActivity : string = '';
 
   constructor(
     public dialogRef: MatDialogRef<AddTodoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private cdr: ChangeDetectorRef
-  ) {}
+    private cdr: ChangeDetectorRef,
+    private ionicStorageService: IonicStorageService
+  ) {
+   
+  }
 
   onBackClick(): void {
     this.dialogRef.close();
   }
 
   onSaveClick(): void {
+
+    const todo: TodoItem =  {
+      id: Date.now(), 
+      calendarWeek: this.data.week,
+      name: this.newActivity,
+      color : this.selectedColor,
+      isDone: false
+    }
+
+    this.ionicStorageService.addTodoItem(todo);
+
     this.dialogRef.close();
   }
 
   selectColor(color: string): void {
     this.selectedColor = color;
-    console.log(`Selected color: ${color}`);
   }
 
   onGroupChange(event: MatRadioChange) {
