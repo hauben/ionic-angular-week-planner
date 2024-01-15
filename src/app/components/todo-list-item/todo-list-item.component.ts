@@ -24,6 +24,7 @@ export class TodoListItemComponent implements OnInit {
   @Input() id: number = -1;
   @Input() isInputFieldDisabled: boolean = true;
   @Input() isChecked: boolean = false;
+  @Input() color: string = 'white';
 
   @Output() deleteItem = new EventEmitter<void>();
   @Output() nameOfTodoChanged: EventEmitter<{ id: number, value: string }> = new EventEmitter();

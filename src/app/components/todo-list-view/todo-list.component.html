@@ -3,7 +3,7 @@
     <mat-icon>arrow_back_ios_new</mat-icon>
   </div>
   <cw-up-down [week]="week"  (currentWeekEvent)="currentWeekEventReceived($event)"></cw-up-down>
-  <todo-list-table-view [week]="week" ></todo-list-table-view>
+  <todo-list-table-view #todolist [week]="week"></todo-list-table-view>
  
   <div class="error-message" *ngIf="errorMessage">
     {{ errorMessage }}

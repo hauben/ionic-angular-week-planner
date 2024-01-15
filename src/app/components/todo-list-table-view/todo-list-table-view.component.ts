@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { MatTabsModule} from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common'; 
@@ -23,7 +23,7 @@ export class TodoListTableView implements OnInit, OnChanges {
 
   @Input() week: number = 1;
 
-  constructor(private ionicStorageService: IonicStorageService) { }
+  constructor(private ionicStorageService: IonicStorageService, private cdr: ChangeDetectorRef) { }
 
   todo_items: TodoItem[] = [];
 
@@ -63,4 +63,13 @@ export class TodoListTableView implements OnInit, OnChanges {
   onStatusOfTodoChanged(eventData: {id: number, checked: boolean }) {
       this.ionicStorageService.updateTodoItemById(eventData.id, { isDone: eventData.checked });
   }
+
+  handleTodoListUpdateEvent()  {
+    // re-read the storage
+    console.log("re-read");
+    this.readTodosForWeek(this.week);
+
+    this.cdr.detectChanges();  // manually trigger change detection
+  }
+
 }

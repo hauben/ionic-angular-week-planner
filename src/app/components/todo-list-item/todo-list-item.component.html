@@ -4,7 +4,8 @@
       (change)="onTodoChecked($event)"
       [checked]="isChecked"
   ></mat-checkbox>
-  <div class="circle-icon mat-elevation-z2"></div>
+ 
+  <div class="circle-icon mat-elevation-z2" [style.background-color]="color"></div>
   
 
   <form [formGroup]="reactiveForm">

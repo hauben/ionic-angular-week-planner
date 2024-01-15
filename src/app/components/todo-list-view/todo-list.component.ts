@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonButton, IonInput, IonContent, IonList, IonLabel, IonItem, IonCheckbox } from '@ionic/angular/standalone';
 import { MatButtonModule } from '@angular/material/button';
@@ -6,9 +6,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 
 import { CwUpDownComponent } from '../cw-up-down/cw-up-down.component';
-import  { TodoListTableView } from '../todo-list-table-view/todo-list-table-view.component';
+import { TodoListTableView } from '../todo-list-table-view/todo-list-table-view.component';
 import { fadeAnimation } from '../../animations'; 
 import { TodoItem } from '../../models/todo.model';
+
 
 import {
   MatDialog,
@@ -45,8 +46,11 @@ export class TodoListComponent {
   todo_items: TodoItem[] = [];
 
   @Output() messageEvent = new EventEmitter<string>();
+  @Output() updateTodoListEvent = new EventEmitter<void>();
 
-  constructor(public dialog: MatDialog, private cdr: ChangeDetectorRef) { }
+  @ViewChild('todolist') todolist!: TodoListTableView;
+
+  constructor(public dialog: MatDialog) { }
 
   @Input() year: number = 2023;
   @Input() week: number = 0;
@@ -64,6 +68,8 @@ export class TodoListComponent {
       });
 
       dialogRef.afterClosed().subscribe(result => {
+        this.updateTodoListEvent.emit();
+        this.todolist.handleTodoListUpdateEvent();
       });
   }
 

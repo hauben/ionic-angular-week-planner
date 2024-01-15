@@ -11,6 +11,7 @@
           <todo-item [id]="todo.id" 
                      [title]="todo.name" 
                      [isChecked]="todo.isDone" 
+                     [color]="todo.color"
                      (deleteItem)="onDeleteItem(todo.id)"  
                      (nameOfTodoChanged)="onNameOfTodoChanged($event)"
                      (statusOfTodoChanged)="onStatusOfTodoChanged($event)"></todo-item>

@@ -40,7 +40,7 @@ export interface DialogData {
   ],
 })
 export class AddTodoDialogComponent  {
-  selectedColor: string  = "NO COLOR";
+  selectedColor: string  = "white";
   @Input() hours_goal: Number = 0;
   @Input() minutes_goal: Number = 0;
   @Input() isDurationSelected : number | null = 0;
