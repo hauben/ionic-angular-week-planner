@@ -4,4 +4,7 @@ export interface TodoItem {
     color : string;
     isDone: boolean;
     calendarWeek: number;
+    isDurationBased: number;
+    activity: string;
+    timegoal: {hours: number, minutes: number}
   }

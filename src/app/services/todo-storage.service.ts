@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Storage } from '@ionic/storage-angular';  // Import Ionic Storage
 
 import { TodoItem } from '../models/todo.model';  // Import the TodoItem model
+import { ActivityItem } from '../models/activity.model';  // Import the Activity model
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,9 @@ export class IonicStorageService {
   private todo_itemsSubject = new BehaviorSubject<TodoItem[]>([]);
   todo_items$: Observable<TodoItem[]> = this.todo_itemsSubject.asObservable();
 
+  private activity_itemsSubject = new BehaviorSubject<ActivityItem[]>([]);
+  activity_items$: Observable<ActivityItem[]> = this.activity_itemsSubject.asObservable();
+
   constructor(private storage: Storage) {
     this.init();
   }
@@ -19,19 +23,28 @@ export class IonicStorageService {
   private async init() {
     await this.storage.create();
     this.loadTodoItemsFromStorage();
+    this.loadActivitiesFromStorage();
   }
 
   private async loadTodoItemsFromStorage() {
     try {
         const storedItems = await this.storage.get('items');
-        const items = storedItems ? JSON.parse(storedItems) : [];
-        this.todo_itemsSubject.next(items);
-        console.log("loaded todos from storage");
+        const todos = storedItems ? JSON.parse(storedItems) : [];
+        this.todo_itemsSubject.next(todos);
     } catch (error) {
-        console.error('Error loading items from storage:', error);
+        console.error('Error loading todos from storage:', error);
     }
   }
 
+  private async loadActivitiesFromStorage() {
+    try {
+        const activityItems = await this.storage.get('activities');
+        const activities = activityItems ? JSON.parse(activityItems) : [];
+        this.activity_itemsSubject.next(activities);
+    } catch (error) {
+        console.error('Error loading activities from storage:', error);
+    }
+  }
 
   async addTodoItem(item: TodoItem) {
     const currentItems = this.todo_itemsSubject.value;
@@ -67,7 +80,7 @@ export class IonicStorageService {
     try {
       await this.storage.set('items', JSON.stringify(items));
     } catch (error) {
-      console.error('Error saving items to storage:', error);
+      console.error('Error saving todos to storage:', error);
     }
   }
 }

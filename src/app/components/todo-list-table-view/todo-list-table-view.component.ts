@@ -66,7 +66,6 @@ export class TodoListTableView implements OnInit, OnChanges {
 
   handleTodoListUpdateEvent()  {
     // re-read the storage
-    console.log("re-read");
     this.readTodosForWeek(this.week);
 
     this.cdr.detectChanges();  // manually trigger change detection
