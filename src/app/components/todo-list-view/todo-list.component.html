@@ -1,7 +1,10 @@
 <div class="todo-list">
-  <div (click)="backToMainClicked()" class="back_to_main">
-    <mat-icon>arrow_back_ios_new</mat-icon>
-  </div>
+
+
+  <button (click)="backToMainClicked()" mat-icon-button color="primary">
+      <mat-icon>arrow_back_ios_new</mat-icon>
+  </button>    
+
   <cw-up-down [week]="week"  (currentWeekEvent)="currentWeekEventReceived($event)"></cw-up-down>
   <todo-list-table-view #todolist [week]="week"></todo-list-table-view>
  

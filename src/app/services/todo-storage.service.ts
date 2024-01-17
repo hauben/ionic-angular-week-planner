@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Storage } from '@ionic/storage-angular'; 
 
-import { Storage } from '@ionic/storage-angular';  // Import Ionic Storage
-
-import { TodoItem } from '../models/todo.model';  // Import the TodoItem model
+import { TodoItem } from '../models/todo.model';          // Import the TodoItem model
 import { ActivityItem } from '../models/activity.model';  // Import the Activity model
 
 @Injectable({

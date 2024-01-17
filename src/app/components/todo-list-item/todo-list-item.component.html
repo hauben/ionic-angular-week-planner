@@ -12,7 +12,7 @@
         <input class="todo_input_field" matInput [value]="title" formControlName="userInput">
   </form>
 
-  <time-display
+  <time-display *ngIf="hasTimeGoal"
     [hours1]="elapsed_hours"
     [minutes1]="elapsed_minutes"
     [seconds1]="elapsed_seconds"
@@ -22,7 +22,7 @@
   ></time-display>
 
   <div class="icon-container">
-    <mat-icon class="icon" (click)="play()">{{ isTimeRunning ? 'stop' : 'play_arrow' }} </mat-icon>
+    <mat-icon *ngIf="hasTimeGoal" class="icon" (click)="play()">{{ isTimeRunning ? 'stop' : 'play_arrow' }} </mat-icon>
     <mat-icon class="icon" (click)="edit()"> {{ isInputFieldDisabled ? 'edit' : 'save' }}</mat-icon>
     <mat-icon class="icon" (click)="delete()">delete</mat-icon>
   </div>

@@ -10,7 +10,6 @@ import { TodoListTableView } from '../todo-list-table-view/todo-list-table-view.
 import { fadeAnimation } from '../../animations'; 
 import { TodoItem } from '../../models/todo.model';
 
-
 import {
   MatDialog,
   MatDialogModule,
@@ -23,7 +22,7 @@ import { AddTodoDialogComponent } from '../add-todo-dialog/add-todo-dialog.compo
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
   standalone: true,
-  animations: [fadeAnimation], // Include the animation in the component's metadata,
+  animations: [fadeAnimation],
   imports: [CommonModule, 
             IonButton, 
             IonContent, 
@@ -38,7 +37,7 @@ import { AddTodoDialogComponent } from '../add-todo-dialog/add-todo-dialog.compo
             MatButtonModule,
             MatIconModule,
             MatDialogModule
-          ],
+          ]
 })
 export class TodoListComponent {
   animal: string = "";
@@ -57,13 +56,13 @@ export class TodoListComponent {
   errorMessage: string = '';
 
   backToMainClicked() {
-   this.messageEvent.emit('back_to_main_clicked');
+    this.messageEvent.emit('back_to_main_clicked');
   }
 
   showAddTodoDialog() {
       const dialogRef = this.dialog.open(AddTodoDialogComponent, {
-        height: '720px',
-        width: '600px',
+        height: '700px',
+        width: '700px',
         data: { week: this.week}
       });
 

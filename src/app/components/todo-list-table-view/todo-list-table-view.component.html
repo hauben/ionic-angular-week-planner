@@ -29,11 +29,13 @@
     <div *ngFor="let todo of todo_items">
         <div *ngIf="!todo.isDone">
           <todo-item [id]="todo.id" 
-                    [title]="todo.name" 
+                    [title]="(todo.isDurationBased === 0) ? todo.name : todo.activity"
                     [isChecked]="todo.isDone" 
+                    [hasTimeGoal]="(todo.isDurationBased===1) ? true : false"
                     (deleteItem)="onDeleteItem(todo.id)"  
                     (nameOfTodoChanged)="onNameOfTodoChanged($event)"
-                    (statusOfTodoChanged)="onStatusOfTodoChanged($event)"></todo-item>
+                    (statusOfTodoChanged)="onStatusOfTodoChanged($event)">
+          </todo-item>
         </div>
     </div>
     

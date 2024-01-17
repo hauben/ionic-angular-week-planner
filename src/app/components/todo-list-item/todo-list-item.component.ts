@@ -3,7 +3,7 @@ import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
-
+import { CommonModule } from '@angular/common';
 import  {TimeDisplayComponent} from '../time-display/time-display.component';
 
 @Component({
@@ -15,7 +15,8 @@ import  {TimeDisplayComponent} from '../time-display/time-display.component';
             MatIconModule,
             TimeDisplayComponent,
             MatFormFieldModule,
-            ReactiveFormsModule
+            ReactiveFormsModule,
+            CommonModule
   ]
 })
 export class TodoListItemComponent implements OnInit {
@@ -24,6 +25,7 @@ export class TodoListItemComponent implements OnInit {
   @Input() id: number = -1;
   @Input() isInputFieldDisabled: boolean = true;
   @Input() isChecked: boolean = false;
+  @Input() hasTimeGoal: boolean = false;
   @Input() color: string = 'white';
 
   @Output() deleteItem = new EventEmitter<void>();

@@ -1,8 +1,15 @@
 <div class="add-todo-dialog">
  
   <div class="top_row_container">
-    <mat-icon (click)="onBackClick()">close</mat-icon>
-    <mat-icon (click)="onSaveClick()">save</mat-icon>
+    
+    <button (click)="onBackClick()" mat-icon-button color="grey">
+        <mat-icon>close</mat-icon>
+    </button>
+    
+    <button (click)="onSaveClick()" mat-icon-button color="grey">
+       <mat-icon (click)="onSaveClick()">save</mat-icon>
+    </button>
+
   </div>
 
   <span class="headline">Add Todo For The Week</span> 

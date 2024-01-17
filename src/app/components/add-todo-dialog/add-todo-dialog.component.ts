@@ -81,28 +81,29 @@ export class AddTodoDialogComponent implements OnInit {
 
   onSaveClick(): void {
 
-   /* const todo: TodoItem =  {
-      id: Date.now(), 
-      calendarWeek: this.data.week,
-      name: this.newTodo,
-      color : this.selectedColor,
-      isDone: false,
-      isDurationBased: this.isDurationSelected,
-      activity: this.newActivity,
-      timegoal: {hours: this.hours_goal, minutes: this.minutes_goal}
-    }
-
-    this.ionicStorageService.addTodoItem(todo);*/
-
-    if (this.isDurationSelected) {
-      if ( (this.selectedActivity==='') && (this.newActivity==='')) {
-        this.error_message_activity = "Select an activity or create a new one.";
-        this.show_error_message = true;
+      if (this.isDurationSelected) {
+        if ( (this.selectedActivity==='') && (this.newActivity==='')) {
+          this.error_message_activity = "Select an activity or create a new one.";
+          this.show_error_message = true;
+        }
       }
-    }
 
+      if (!this.show_error_message) {
 
-    //this.dialogRef.close();
+          const todo: TodoItem =  {
+                id: Date.now(), 
+                calendarWeek: this.data.week,
+                name: this.newTodo,
+                color : this.selectedColor,
+                isDone: false,
+                isDurationBased: this.isDurationSelected,
+                activity: (this.newActivity.length>0) ? this.newActivity : this.selectedActivity,
+                timegoal: {hours: this.hours_goal, minutes: this.minutes_goal}
+              }
+
+            this.ionicStorageService.addTodoItem(todo);
+      }  
+      this.dialogRef.close();
   }
 
   selectColor(color: string): void {
