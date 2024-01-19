@@ -19,6 +19,7 @@ bootstrapApplication(AppComponent, {
     provideIonicAngular(),
     provideRouter(routes),
     importProvidersFrom(IonicStorageModule.forRoot()),
+    provideAnimations(),
     provideAnimations()
 ],
 });

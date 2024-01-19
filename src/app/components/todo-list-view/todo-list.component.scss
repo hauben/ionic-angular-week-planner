@@ -10,6 +10,7 @@
     border-bottom-left-radius: 50px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding-bottom: 4em;
+    margin-top: -5em;
   }
   
   h2 {
@@ -35,18 +36,18 @@
   
   /* Adjust the button's height to match the input */
   button {
-    background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 4px;
-    padding: 10px 16px;
+    width: 40px;
+    height: 40px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
   }
   
   button:hover {
-    background-color: #0056b3;
+    background-color: #c68205;
   }
   
   ul {
@@ -100,6 +101,12 @@
     text-align: center;
     margin-top: 1em;
   }
+
+  .add-button {
+    background-color: #ffa600;
+    margin-bottom: 1em;
+  }
+
 
 
   

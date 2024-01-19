@@ -1,6 +1,6 @@
 .hexagon {
-    width: 7.5vh;
-    height:8.5vh;
+    width: 15.5vh;
+    height:16.5vh;
     background-color: rgb(255, 166, 0);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     margin: 0 2px;
@@ -12,8 +12,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2vh;
-    font-weight: 700;
+    font-size: 4vh;
+    font-weight: 400;
     color: white;
     cursor: pointer;
     user-select: none;
@@ -24,6 +24,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column; 
+    margin-top:-3em;
   }
 
   .prev_next_buttons {

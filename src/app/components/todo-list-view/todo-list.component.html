@@ -1,7 +1,7 @@
 <div class="todo-list">
 
 
-  <button (click)="backToMainClicked()" mat-icon-button color="primary">
+  <button  class="add-button" (click)="backToMainClicked()"  mat-fab>
       <mat-icon>arrow_back_ios_new</mat-icon>
   </button>    
 
@@ -14,7 +14,7 @@
 </div>
 
 <div class="add_todo">
-  <button (click)="showAddTodoDialog()" mat-fab>
+  <button class="add-button" mat-fab (click)="showAddTodoDialog()" mat-fab>
     <mat-icon>add</mat-icon>
   </button>
 </div>
