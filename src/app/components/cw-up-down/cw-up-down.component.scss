@@ -1,10 +1,11 @@
 .hexagon {
-    width: 15.5vh;
-    height:16.5vh;
+    width: 11.5vh;
+    height:12.5vh;
     background-color: rgb(255, 166, 0);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     margin: 0 2px;
     position: relative;
+    display: inline-block;
   }
 
   .hex-text {
@@ -20,15 +21,31 @@
   }
 
   .centered {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column; 
+    position: relative;
+    text-align: center;
     margin-top:-3em;
   }
 
-  .prev_next_buttons {
-    color: black;
-    margin-top: 0.5em;
-  }
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  color: #ffa600;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  top: 52%;
+}
+
+.prev-btn {
+  left: 205px; /* adjust the distance as needed */
+}
+
+.next-btn {
+  right: 205px; /* adjust the distance as needed */
+}
   

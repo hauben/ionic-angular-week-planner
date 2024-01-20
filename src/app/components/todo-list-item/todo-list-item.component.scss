@@ -10,18 +10,9 @@
   }
   
   .circle-icon {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-  }
-  
-  .title {
-    flex-grow: 1;
-  }
-
-  .icon-container {
-    display: flex;
-    align-items: center;
   }
   
   .icon {
@@ -30,10 +21,9 @@
   }
 
   .todo_input_field {
-    min-width: 285px;
-    margin-right: 1em;
     margin-left: 1em;
     color: white;
+    width: 23vw;
   }
 
   .icon {

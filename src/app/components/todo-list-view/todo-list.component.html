@@ -1,8 +1,8 @@
 <div class="todo-list">
 
 
-  <button  class="add-button" (click)="backToMainClicked()"  mat-fab>
-      <mat-icon>arrow_back_ios_new</mat-icon>
+  <button class="add-button" (click)="backToMainClicked()"  mat-fab>
+      <mat-icon class="back-icon">arrow_back_ios_new</mat-icon>
   </button>    
 
   <cw-up-down [week]="week"  (currentWeekEvent)="currentWeekEventReceived($event)"></cw-up-down>
@@ -15,7 +15,7 @@
 
 <div class="add_todo">
   <button class="add-button" mat-fab (click)="showAddTodoDialog()" mat-fab>
-    <mat-icon>add</mat-icon>
+    <mat-icon class="add-icon">add</mat-icon>
   </button>
 </div>
 

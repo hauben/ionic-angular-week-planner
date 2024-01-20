@@ -1,10 +1,14 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'cw-up-down',
   standalone: true,
   templateUrl: './cw-up-down.component.html',
   styleUrls: ['./cw-up-down.component.scss'],
+  imports: [
+    MatIconModule
+  ]
 })
 export class CwUpDownComponent {
 

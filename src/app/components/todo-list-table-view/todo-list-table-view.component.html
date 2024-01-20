@@ -3,8 +3,10 @@
   <!-- Tab A ALL Todos -->
   <mat-tab label="Tab A">
     <ng-template mat-tab-label>
-      <mat-icon>list_alt</mat-icon>
-      ALL
+      <div class="tab-label-container">
+        <mat-icon class="tab-icon">list_alt</mat-icon>
+        <span>ALL</span>
+      </div>
     </ng-template>
     <div>
       <div *ngFor="let todo of todo_items">
@@ -20,11 +22,13 @@
     <ng-template #loadingItems>Loading items...</ng-template>
   </mat-tab>
 
-  <!-- Tab B OPEN Todos -->
+
   <mat-tab label="Tab B">
     <ng-template mat-tab-label>
-      <mat-icon>check_box_outline_blank</mat-icon>
-      OPEN
+      <div class="tab-label-container">
+        <mat-icon class="tab-icon">check_box_outline_blank</mat-icon>
+        <span>OPEN</span>
+      </div>
     </ng-template>
     <div *ngFor="let todo of todo_items">
         <div *ngIf="!todo.isDone">
@@ -38,14 +42,15 @@
           </todo-item>
         </div>
     </div>
-    
   </mat-tab>
 
   <!-- Tab C DONE Todos -->
   <mat-tab label="Tab C">
     <ng-template mat-tab-label>
-      <mat-icon>check_box</mat-icon>
-      DONE
+      <div class="tab-label-container">
+        <mat-icon class="tab-icon">check_box</mat-icon>
+        <span>DONE</span>
+      </div>
     </ng-template>
     <div *ngFor="let todo of todo_items">
       <div *ngIf="todo.isDone">
