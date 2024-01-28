@@ -1,10 +1,10 @@
 <h1>Calendar Week Planer</h1> 
 <ion-content class="ion-no-padding">
  
+    <div (click)="showAboutPage()" class="bottom-hexagon"><div class="hex-text">?!</div></div>
+
     <div *ngIf="!showTodoList"class="hex-container">
-      
-        <div (click)="showAboutPage()" class="bottom-hexagon"><div class="hex-text">?!</div></div>
-       
+         
         <div class="hex-row">
             <div class="hexagon" [ngClass]="{'currentCalendarWeek': isCurrentCalendarWeek(i)}" *ngFor="let i of [1,2,3,4]" (click)="selectWeek(i)"><div class="hex-text">{{i}}</div></div>
         </div>

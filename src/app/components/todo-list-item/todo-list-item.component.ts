@@ -26,6 +26,8 @@ export class TodoListItemComponent implements OnInit {
   @Input() isInputFieldDisabled: boolean = true;
   @Input() isChecked: boolean = false;
   @Input() hasTimeGoal: boolean = false;
+  @Input() hoursTimeGoal: string = '00';
+  @Input() minutesTimeGoal: string = '00';
   @Input() color: string = 'white';
 
   @Output() deleteItem = new EventEmitter<void>();
@@ -46,12 +48,9 @@ export class TodoListItemComponent implements OnInit {
   }
 
   
-  elapsed_hours: string = "01"
+  elapsed_hours: string = "00"
   elapsed_minutes: string = "00"
   elapsed_seconds: string = "00"
-  goal_hours: string = "02"
-  goal_minutes: string = "00"
-  goal_seconds: string = "00"
 
   isTimeRunning: boolean = false;
 
@@ -90,8 +89,6 @@ export class TodoListItemComponent implements OnInit {
   }
 
   play() {
-    console.log("play clicked");
-
     this.isTimeRunning = !this.isTimeRunning;
   }
 

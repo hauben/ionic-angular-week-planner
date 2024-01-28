@@ -7,6 +7,7 @@ import { filter, map } from 'rxjs/operators';
 import { IonicStorageService } from '../../services/todo-storage.service';
 import  {TodoListItemComponent} from '../todo-list-item/todo-list-item.component';
 import { TodoItem } from '../../models/todo.model';
+import { ActivityItem } from '../../models/activity.model';
 
 @Component({
   selector: 'todo-list-table-view',
@@ -29,6 +30,7 @@ export class TodoListTableView implements OnInit, OnChanges {
 
   async readTodosForWeek(week: number) {
       // filter for todo items only for the current selected calendar week
+     
       this.ionicStorageService.todo_items$
           .pipe(
             filter( (todo_items: TodoItem[]) => !!todo_items), // Check if todo_items is not null or undefined
@@ -39,6 +41,20 @@ export class TodoListTableView implements OnInit, OnChanges {
       });
   }
 
+  parseActivityName(activity: object): string  {
+
+    try {
+      if (activity && 'name' in activity) {
+        return (activity as ActivityItem).name
+      }
+      return '';
+    } catch (error) {
+      return '';
+    }
+
+    return '';
+  }
+  
   async ngOnInit() {
     this.readTodosForWeek(this.week);
   }

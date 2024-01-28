@@ -1,21 +1,21 @@
-<ion-content class="ion-padding">
- 
-  <ion-card class="about-card">
-
-    <ion-card-header>
-      <ion-card-title class="title">{{appName}}</ion-card-title>
-      <ion-card-subtitle class="subtitle">{{appSubtitle}}</ion-card-subtitle>
-      <ion-icon class="icon" name="information-circle-outline"></ion-icon>
-    </ion-card-header>
-    
-    <ion-card-content class="text-content">
+<div class="card-container">
+  <mat-card class="mat-card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title class="title">{{appName}}</mat-card-title>
+        <mat-card-subtitle>{{appSubtitle}} ({{appVersion}})</mat-card-subtitle>
+        <mat-icon>information-circle-outline</mat-icon>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content class="content">
       Just a small calendar app (yet another) which hopes to help
       you keeping track on your desired activities through out the year.
-    </ion-card-content>
+    </mat-card-content>
 
-    <ion-icon (click)="backButtonClicked()" class="icon-back" name="return-down-back-outline"></ion-icon> 
-    <div class="version-number">{{ appVersion }}</div>
-  
-  </ion-card>
-</ion-content>
+    <mat-card-actions>
+      <button class="back-button" mat-fab><mat-icon (click)="backButtonClicked()">arrow_back_ios_new</mat-icon></button>
+      
+    </mat-card-actions>
+  </mat-card>
+</div>
 

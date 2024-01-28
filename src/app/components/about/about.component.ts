@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
-import { IonIcon, IonContent, IonCard, IonCardTitle, IonCardHeader, IonCardContent, IonCardSubtitle } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
-
-import { informationCircleOutline, returnDownBackOutline } from 'ionicons/icons';
-import { addIcons } from 'ionicons';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
   standalone: true,
-  imports: [IonIcon, IonContent, IonCard, IonCardHeader, IonCardContent, IonCardSubtitle, IonCardTitle]
+  imports: [MatIconModule,MatCardModule]
 })
 
 export class AboutComponent {
@@ -20,7 +18,7 @@ export class AboutComponent {
   appVersion: string = "v 1.0";
 
   constructor(private router: Router) {
-      addIcons({ informationCircleOutline, returnDownBackOutline });  // workaround to the ion-icons working
+   
   }
 
   backButtonClicked() {

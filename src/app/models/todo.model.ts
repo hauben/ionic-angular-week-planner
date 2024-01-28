@@ -5,6 +5,7 @@ export interface TodoItem {
     isDone: boolean;
     calendarWeek: number;
     isDurationBased: number;
-    activity: string;
-    timegoal: {hours: number, minutes: number}
+    activity: object;
+    timegoalHours: string;
+    timegoalMinutes: string;
   }

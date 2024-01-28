@@ -42,8 +42,8 @@ export interface DialogData  {
 })
 export class AddTodoDialogComponent implements OnInit {
   selectedColor: string  = "white";
-  @Input() hours_goal: number = 0;
-  @Input() minutes_goal: number = 0;
+  @Input() hours_goal: string = '00';
+  @Input() minutes_goal: string = '00';
   @Input() isDurationSelected: number = 0;
   @Input() newActivity : string = '';
   @Input() newTodo : string = '';
@@ -97,8 +97,11 @@ export class AddTodoDialogComponent implements OnInit {
                 color : this.selectedColor,
                 isDone: false,
                 isDurationBased: this.isDurationSelected,
-                activity: (this.newActivity.length>0) ? this.newActivity : this.selectedActivity,
-                timegoal: {hours: this.hours_goal, minutes: this.minutes_goal}
+                activity: {
+                    name:  (this.newActivity.length>0) ? this.newActivity : this.selectedActivity,
+                },
+                timegoalHours: this.hours_goal.toString().padStart(2, '0'),
+                timegoalMinutes: this.minutes_goal.toString().padStart(2, '0')
               }
 
             this.ionicStorageService.addTodoItem(todo);
@@ -116,7 +119,7 @@ export class AddTodoDialogComponent implements OnInit {
   }
 
   onActivitySelectionChange(event: MatSelectChange) {
-    this.selectedActivity = event.value;
+    this.selectedActivity = event.value.name;
     this.show_error_message = false;
   }
 

@@ -61,9 +61,9 @@
       <div *ngIf="isDurationSelected === 1" class="time-goal-container">
         <div class="title">Add A Time Goal</div>
         <div class="time-inputs">
-          <input type="number" matInput [value]="hours_goal" placeholder="Hours">
+          <input type="number" matInput [(ngModel)]="hours_goal" placeholder="Hours">
           <span>:</span>
-          <input type="number" matInput [value]="minutes_goal" placeholder="Minutes">
+          <input type="number" matInput [(ngModel)]="minutes_goal" placeholder="Minutes">
         </div>
       </div>
 
