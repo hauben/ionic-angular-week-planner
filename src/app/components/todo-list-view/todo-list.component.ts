@@ -16,6 +16,7 @@ import {
 } from '@angular/material/dialog';
 
 import { AddTodoDialogComponent } from '../add-todo-dialog/add-todo-dialog.component';
+import { StatsDialogComponent } from '../stats-dialog/stats-dialog.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -59,6 +60,7 @@ export class TodoListComponent {
     this.messageEvent.emit('back_to_main_clicked');
   }
 
+
   showAddTodoDialog() {
       const dialogRef = this.dialog.open(AddTodoDialogComponent, {
         height: '700px',
@@ -71,6 +73,18 @@ export class TodoListComponent {
         this.todolist.handleTodoListUpdateEvent();
       });
   }
+
+  statsClicked() {
+    const dialogRef = this.dialog.open(StatsDialogComponent, {
+      height: '700px',
+      width: '700px',
+      data: { week: this.week}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    
+    });
+}
 
   currentWeekEventReceived(week: number) {
      this.week = week;

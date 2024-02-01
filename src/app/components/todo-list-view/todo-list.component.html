@@ -1,9 +1,14 @@
 <div class="todo-list">
 
+  <div class="button_row">
+    <button class="add-button back-button" (click)="backToMainClicked()"  mat-fab>
+        <mat-icon class="back-icon">arrow_back_ios_new</mat-icon>
+    </button>    
 
-  <button class="add-button back-button" (click)="backToMainClicked()"  mat-fab>
-      <mat-icon class="back-icon">arrow_back_ios_new</mat-icon>
-  </button>    
+    <button class="add-button stats-button" (click)="statsClicked()"  mat-fab>
+      <mat-icon class="back-icon">query_stats</mat-icon>
+    </button>    
+  </div>  
 
   <cw-up-down [week]="week"  (currentWeekEvent)="currentWeekEventReceived($event)"></cw-up-down>
   <todo-list-table-view #todolist [week]="week"></todo-list-table-view>

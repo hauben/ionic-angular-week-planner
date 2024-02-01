@@ -116,8 +116,20 @@
     margin-left: -2px;
   }
 
-  .back-button{
+  .back-button, .stats-button{
    z-index: 1; 
+  }
+
+  .back-button {
+    float: left;
+  }
+
+  .stats-button {
+    float: right;
+  }
+
+  .button_row {
+    text-align: center;
   }
 
 
