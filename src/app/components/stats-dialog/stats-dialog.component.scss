@@ -20,23 +20,11 @@
     margin-bottom: 1em;
   }
 
-  .color-assignment-container, .duration-container, .activity-container {
+   .activity-container {
     width: 100%;
-    padding: 10px; 
-  }
-
-  .color-assignment-container {
-    margin-top: 1em;
-  }
-  
-  .color-assignment-container, .duration-container {
-    border-top: 1px solid #ffffff; /* Add a top border */
-    border-bottom: 1px solid #ffffff; /* Add a bottom border */
-  }
-
-  .activity-container {
     text-align: left;
   }
+
 
   .select-activity-container {
     margin-top: 1em;
@@ -50,63 +38,11 @@
     margin-bottom: 1em;
   }
   
-  .color-circles {
-    display: flex;
-    gap: 10px; /* Adjust the gap between circles as needed */
-  }
-  
-  .color-circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-  }
-  
-  .blue { background-color: blue; }
-  .black { background-color: black; }
-  .green { background-color: green; }
-  .yellow { background-color: yellow; }
-  .red { background-color: red; }
-  .white { background-color: white; }
-
-  .selected {
-    border: 3px solid #333; /* Add a border to indicate selection */
-  }
-  
-
-
-  .time-goal-container {
-    width: 100%;
-    margin-top:1em; 
-    padding-bottom: 10px; 
-    padding-left: 10px; 
-  }
-  
-
-  
-  .time-inputs {
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Adjust the gap between inputs as needed */
-  }
-  
-  .time-inputs input {
-    width: 50px; /* Adjust the input width as needed */
-    padding: 5px; /* Adjust the input padding as needed */
-    text-align: center;
-  }
-
-  .radio-buttons {
-    text-align: left;
-  }
 
   .activity-form-field {
     width: 100%;
   }
 
-  .description-container {
-    margin-top: 1em;
-    padding-left: 10px; 
-  }
 
   .error_message_activity {
     color: red;
@@ -120,4 +56,11 @@
     width: 40px;
     height: 40px;
   }
+
+  .summary {
+    padding: 5px;
+    border: 1px solid white;
+    background-color: #393939;
+  }
+  
 

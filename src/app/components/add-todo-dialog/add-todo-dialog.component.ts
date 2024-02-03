@@ -67,7 +67,7 @@ export class AddTodoDialogComponent implements OnInit {
 
   activities: ActivityItem[] = [];
 
-  async readActivities() {
+  private async readActivities() {
      // read out all activies
      this.ionicStorageService.activity_items$.subscribe((activities: ActivityItem[]) => {
           this.activities = activities;

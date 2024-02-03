@@ -50,9 +50,9 @@ export class HomePage {
     this.selectedWeek = 0; // Clear selectedMonth when returning to calendar weeks
   }
 
-  
+
   // Function to calculate the current calendar week
-  getCurrentCalendarWeek(): number {
+  private getCurrentCalendarWeek(): number {
     const currentDate = new Date();
     return  getISOWeek(currentDate);
   }
@@ -65,11 +65,8 @@ export class HomePage {
     return (week==this.getCurrentCalendarWeek())
   }
 
-
   receiveMessage(message: string) {
     this.showCalendarWeeks();
   }
-
-
 
 }

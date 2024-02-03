@@ -60,7 +60,6 @@ export class TodoListComponent {
     this.messageEvent.emit('back_to_main_clicked');
   }
 
-
   showAddTodoDialog() {
       const dialogRef = this.dialog.open(AddTodoDialogComponent, {
         height: '700px',
@@ -84,7 +83,7 @@ export class TodoListComponent {
     dialogRef.afterClosed().subscribe(result => {
     
     });
-}
+  }
 
   currentWeekEventReceived(week: number) {
      this.week = week;

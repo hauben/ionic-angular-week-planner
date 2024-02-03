@@ -18,7 +18,6 @@ export class AboutComponent {
   appVersion: string = "v 1.0";
 
   constructor(private router: Router) {
-   
   }
 
   backButtonClicked() {

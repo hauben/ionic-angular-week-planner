@@ -55,7 +55,7 @@ export class TodoListItemComponent implements OnInit {
   isTimeRunning: boolean = false;
 
   // Getter for easy access to the form control
-  get userInputControl() {
+  private get userInputControl() {
      return this.reactiveForm.get('userInput');
   }
 
@@ -64,7 +64,7 @@ export class TodoListItemComponent implements OnInit {
   }
 
   // Toggle the disabled state of the input field
-  toggleEdit() {
+  private toggleEdit() {
     const currentStatus = this.userInputControl?.disabled;
 
     if (currentStatus) {
