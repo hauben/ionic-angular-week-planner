@@ -20,7 +20,8 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "useDefineForClassFields": false,
-    "types": ["node", "date-fns"]
+    "types": ["node", "date-fns"],
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

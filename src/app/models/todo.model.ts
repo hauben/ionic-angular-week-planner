@@ -1,3 +1,5 @@
+import { ActivityItem } from './activity.model';
+
 export interface TodoItem {
     id: number;
     name: string;
@@ -5,7 +7,7 @@ export interface TodoItem {
     isDone: boolean;
     calendarWeek: number;
     isDurationBased: number;
-    activity: object;
+    activity: ActivityItem;
     timegoalHours: string;
     timegoalMinutes: string;
   }

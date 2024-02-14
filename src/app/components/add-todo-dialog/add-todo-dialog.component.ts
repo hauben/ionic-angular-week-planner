@@ -99,6 +99,8 @@ export class AddTodoDialogComponent implements OnInit {
                 isDurationBased: this.isDurationSelected,
                 activity: {
                     name:  (this.newActivity.length>0) ? this.newActivity : this.selectedActivity,
+                    id: Date.now(),
+                    sessions: []
                 },
                 timegoalHours: this.hours_goal.toString().padStart(2, '0'),
                 timegoalMinutes: this.minutes_goal.toString().padStart(2, '0')

@@ -5,12 +5,17 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule, MatSelectChange } from '@angular/material/select';
-import { MatTableModule } from '@angular/material/table';
-
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
+import { filter, map } from 'rxjs/operators';
 import { IonicStorageService } from '../../services/todo-storage.service';
 
 import { TodoItem } from '../../models/todo.model';
 import { ActivityItem } from '../../models/activity.model';
+
+import {
+  secondsToDateString, 
+  calculateDuration,
+} from '../../helpers';
 
 import {
   MatDialogRef,
@@ -61,28 +66,62 @@ export class StatsDialogComponent implements OnInit {
   error_message_activity: string = '';
   show_error_message: boolean = false;
 
-  testData: ActivityEntry[] = [
-    {activity: 'MyActivity', start: '09.10.23 13:44', end: '09.10.23 15:44', duration: '02:00:00'},
-    {activity: 'MyActivity2', start: '12.10.23 10:25', end: '12.10.23 10:50', duration: '00:25:00'},
-  
+  //  Example: {activity: 'MyActivity', start: '09.10.23 13:44', end: '09.10.23 15:44', duration: '02:00:00'},
+  filteredActivities: ActivityEntry[] = [
   ];
 
   displayedColumns: string[] = ['activity', 'start', 'end', 'duration'];
-  dataSource = this.testData;
+  dataSource = new MatTableDataSource<ActivityEntry>([]);
 
-  total: string = '02:25:00';
+  
+
+  total: string = '00:00';
+
+  activities: ActivityItem[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<StatsDialogComponent>,
-    private ionicStorageService: IonicStorageService
+    private ionicStorageService: IonicStorageService,
   ) {
+      this.dataSource.data = this.filteredActivities;
   }
 
   ngOnInit(): void {
     this.readActivities();
   }
 
-  activities: ActivityItem[] = [];
+  async readTodos(activity: string) {
+    this.filteredActivities = [];  // clear array first
+
+    // search only for recorded todos with machting the selected activity
+    this.ionicStorageService.todo_items$
+      .pipe(
+        filter( (todo_items: TodoItem[]) => !!todo_items), // Check if todo_items is not null or undefined
+        map((todo_items: TodoItem[] | undefined) => todo_items?.filter(item => item.activity.name === activity) || [])
+      )
+      .subscribe((filteredTodoItems: TodoItem[]) => {
+        this.todo_items = filteredTodoItems;
+      });
+
+      this.todo_items.forEach(time_based_todo_item => {
+        time_based_todo_item.activity.sessions.forEach(session => {
+         
+          let entry = {
+            activity: time_based_todo_item.activity.name,
+            start: secondsToDateString(session.start),
+            end: secondsToDateString(session.end),
+            duration: calculateDuration(session.start, session.end)
+          }
+
+           this.filteredActivities.push(entry)    
+        });
+      
+      });
+     
+      this.dataSource.data = this.filteredActivities;
+}
+
+ 
 
   private async readActivities() {
      // read out all activies
@@ -100,6 +139,8 @@ export class StatsDialogComponent implements OnInit {
   onActivitySelectionChange(event: MatSelectChange) {
     this.selectedActivity = event.value.name;
     this.show_error_message = false;
+
+    this.readTodos(this.selectedActivity);
   }
 
   onFilterSelectionChange(event: MatSelectChange) {
