@@ -5,3 +5,8 @@ export interface ActivityItem {
     name: string;
     sessions: Session[];
   }
+
+export interface Activity {
+  id: number;
+  name: string;
+}  

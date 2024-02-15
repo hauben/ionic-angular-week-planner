@@ -12,7 +12,7 @@ import { IonicStorageService } from '../../services/todo-storage.service';
 
 
 import { TodoItem } from '../../models/todo.model';
-import { ActivityItem } from '../../models/activity.model';
+import { Activity } from '../../models/activity.model';
 
 import {
   MAT_DIALOG_DATA,
@@ -52,6 +52,7 @@ export class AddTodoDialogComponent implements OnInit {
   selectedActivity: string = '';
   error_message_activity: string = '';
   show_error_message: boolean = false;
+  activities: Activity[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<AddTodoDialogComponent>,
@@ -65,11 +66,10 @@ export class AddTodoDialogComponent implements OnInit {
     this.readActivities();
   }
 
-  activities: ActivityItem[] = [];
 
   private async readActivities() {
      // read out all activies
-     this.ionicStorageService.activity_items$.subscribe((activities: ActivityItem[]) => {
+     this.ionicStorageService.activity_items$.subscribe((activities: Activity[]) => {
           this.activities = activities;
      });
   }
@@ -83,8 +83,15 @@ export class AddTodoDialogComponent implements OnInit {
 
       if (this.isDurationSelected) {
         if ( (this.selectedActivity==='') && (this.newActivity==='')) {
-          this.error_message_activity = "Select an activity or create a new one.";
+          this.error_message_activity = "Select an activity or type in a new one.";
           this.show_error_message = true;
+        }
+      }
+      else {
+        if (this.newTodo==='') {
+          this.error_message_activity = "Enter your todo first.";
+          this.show_error_message = true;
+
         }
       }
 
@@ -104,11 +111,24 @@ export class AddTodoDialogComponent implements OnInit {
                 },
                 timegoalHours: this.hours_goal.toString().padStart(2, '0'),
                 timegoalMinutes: this.minutes_goal.toString().padStart(2, '0')
+          }
+
+          if  (this.isDurationSelected) {
+              // store new activity
+              let activity = {
+                id: Date.now(),
+                name: this.newActivity
               }
 
-            this.ionicStorageService.addTodoItem(todo);
-      }  
-      this.dialogRef.close();
+              this.ionicStorageService.addActivity(activity);
+          } 
+
+          this.ionicStorageService.addTodoItem(todo);
+          this.dialogRef.close();
+          this.show_error_message = false;
+          this.error_message_activity = '';
+      }
+  
   }
 
   selectColor(color: string): void {
@@ -117,6 +137,8 @@ export class AddTodoDialogComponent implements OnInit {
 
   onGroupChange(event: MatRadioChange) {
     this.isDurationSelected = event.value
+    this.show_error_message = false;
+    this.error_message_activity = '';
     this.cdr.detectChanges();  // manually trigger change detection
   }
 

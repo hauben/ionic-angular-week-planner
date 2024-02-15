@@ -33,6 +33,8 @@
         <mat-label>New Todo here ...</mat-label>
           <input class="todo_input_field" matInput [(ngModel)]="newTodo" placeholder="Enter a new todo ...">
       </mat-form-field>
+
+      <div *ngIf="show_error_message && newTodo.length===0" class="error_message_activity title">{{error_message_activity}}</div>
     </div>
 
     <div class="select-activity-container" *ngIf="isDurationSelected === 1">
@@ -55,7 +57,7 @@
           </mat-form-field>
         </div>
 
-        <div *ngIf="show_error_message" class="error_message_activity title">{{error_message_activity}}</div>
+        <div *ngIf="show_error_message && (newActivity.length===0)" class="error_message_activity title">{{error_message_activity}}</div>
       </div>
   
       <div *ngIf="isDurationSelected === 1" class="time-goal-container">

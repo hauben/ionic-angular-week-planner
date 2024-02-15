@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Storage } from '@ionic/storage-angular'; 
 
 import { TodoItem } from '../models/todo.model';          // Import the TodoItem model
-import { ActivityItem } from '../models/activity.model';  // Import the Activity model
+import { Activity } from '../models/activity.model';  // Import the Activity model
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +12,8 @@ export class IonicStorageService {
   private todo_itemsSubject = new BehaviorSubject<TodoItem[]>([]);
   todo_items$: Observable<TodoItem[]> = this.todo_itemsSubject.asObservable();
 
-  private activity_itemsSubject = new BehaviorSubject<ActivityItem[]>([]);
-  activity_items$: Observable<ActivityItem[]> = this.activity_itemsSubject.asObservable();
+  private activity_itemsSubject = new BehaviorSubject<Activity[]>([]);
+  activity_items$: Observable<Activity[]> = this.activity_itemsSubject.asObservable();
 
   constructor(private storage: Storage) {
     this.init();
@@ -43,6 +43,14 @@ export class IonicStorageService {
     } catch (error) {
         console.error('Error loading activities from storage:', error);
     }
+  }
+
+  async addActivity(activity: Activity) {
+    const currentItems = this.activity_itemsSubject.value;
+    const updatedItems = [...currentItems, activity];
+    this.activity_itemsSubject.next(updatedItems);
+
+    await this.saveActivitiesToStorage(updatedItems);
   }
 
   async addTodoItem(item: TodoItem) {
@@ -80,6 +88,14 @@ export class IonicStorageService {
       await this.storage.set('items', JSON.stringify(items));
     } catch (error) {
       console.error('Error saving todos to storage:', error);
+    }
+  }
+
+  private async saveActivitiesToStorage(items: Activity[]) {
+    try {
+      await this.storage.set('activities', JSON.stringify(items));
+    } catch (error) {
+      console.error('Error saving activities to storage:', error);
     }
   }
 }

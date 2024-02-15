@@ -10,7 +10,7 @@ import { filter, map } from 'rxjs/operators';
 import { IonicStorageService } from '../../services/todo-storage.service';
 
 import { TodoItem } from '../../models/todo.model';
-import { ActivityItem } from '../../models/activity.model';
+import { Activity } from '../../models/activity.model';
 
 import {
   secondsToDateString, 
@@ -77,7 +77,7 @@ export class StatsDialogComponent implements OnInit {
 
   total: string = '00:00';
 
-  activities: ActivityItem[] = [];
+  activities: Activity[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<StatsDialogComponent>,
@@ -125,7 +125,7 @@ export class StatsDialogComponent implements OnInit {
 
   private async readActivities() {
      // read out all activies
-     this.ionicStorageService.activity_items$.subscribe((activities: ActivityItem[]) => {
+     this.ionicStorageService.activity_items$.subscribe((activities: Activity[]) => {
           this.activities = activities;
      });
   }
