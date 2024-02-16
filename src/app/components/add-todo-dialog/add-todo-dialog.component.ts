@@ -62,6 +62,8 @@ export class AddTodoDialogComponent implements OnInit {
   ) {
    
   }
+
+
   ngOnInit(): void {
     this.readActivities();
   }
@@ -78,6 +80,7 @@ export class AddTodoDialogComponent implements OnInit {
   onBackClick(): void {
     this.dialogRef.close();
   }
+
 
   onSaveClick(): void {
 
@@ -128,12 +131,13 @@ export class AddTodoDialogComponent implements OnInit {
           this.show_error_message = false;
           this.error_message_activity = '';
       }
-  
   }
+
 
   selectColor(color: string): void {
     this.selectedColor = color;
   }
+
 
   onGroupChange(event: MatRadioChange) {
     this.isDurationSelected = event.value
@@ -142,11 +146,13 @@ export class AddTodoDialogComponent implements OnInit {
     this.cdr.detectChanges();  // manually trigger change detection
   }
 
+
   onActivitySelectionChange(event: MatSelectChange) {
     this.selectedActivity = event.value.name;
     this.show_error_message = false;
   }
 
+  
   onActivityInputChange(event: any) {
     const inputValue = event.target.value;
     if (inputValue.length>0) {

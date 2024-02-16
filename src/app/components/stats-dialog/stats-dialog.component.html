@@ -23,7 +23,7 @@
     
       <mat-form-field appearance="fill" class="activity-form-field">
         <mat-label>Choose your filter</mat-label>
-        <mat-select (selectionChange)="onFilterSelectionChange($event)">
+        <mat-select (selectionChange)="onFilterSelectionChange($event)" [value]="defaultFilter">
         
           <mat-option *ngFor="let filter of filters" [value]="filter">{{filter}}</mat-option>
         </mat-select>
