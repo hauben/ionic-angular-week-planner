@@ -16,6 +16,8 @@
 
 <br/>
 
+## Description:
+This application uses the [Ionic Framework 7](https://ionicframework.com/) and [Angular 16](https://angular.io).
 
 ## How to get this app running ?
 The fastest way to get the app running is probably on a PC. 
