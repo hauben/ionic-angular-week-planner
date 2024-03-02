@@ -1,11 +1,12 @@
-<div class="time-container">
-  <div class="time-segment">{{ hours1 }}</div>
-  <div >:</div>
-  <div class="time-segment">{{ minutes1 }}</div>
-</div>
-<div class="separator">-------</div>
-<div class="time-container">
-  <div class="time-segment">{{ hours2 }}</div>
-  <div >:</div>
-  <div class="time-segment">{{ minutes2 }}</div>
-</div>
+<div class="container">
+
+  <div class="left-column">
+      <div class="time-container">{{ currentTime }}</div>
+      <div class="time-container">{{ hours2 }}:{{ minutes2 }}:00</div>
+  </div>
+
+  <div class="right-column">
+    <mat-icon class="icon" (click)="play_stop()">{{ isTimeRunning ? 'stop' : 'play_arrow' }} </mat-icon>
+  </div>
+
+  </div>

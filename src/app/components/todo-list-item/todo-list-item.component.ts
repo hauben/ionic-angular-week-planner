@@ -52,7 +52,6 @@ export class TodoListItemComponent implements OnInit {
   elapsed_minutes: string = "00"
   elapsed_seconds: string = "00"
 
-  isTimeRunning: boolean = false;
 
   // Getter for easy access to the form control
   private get userInputControl() {
@@ -88,9 +87,6 @@ export class TodoListItemComponent implements OnInit {
     this.isInputFieldDisabled = !this.isInputFieldDisabled;
   }
 
-  play() {
-    this.isTimeRunning = !this.isTimeRunning;
-  }
 
   onTodoChecked(event: MatCheckboxChange) {
     const id = this.id;
