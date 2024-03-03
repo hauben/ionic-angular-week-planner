@@ -1,24 +1,15 @@
 .container {
   display: flex;
-}
-
-.left-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.right-column {
-  flex: 1;
-  margin-top: 7px;
-  margin-left: 10px;
+  margin-left: 5.3em;
+  color: white;
 }
 
 .time-container {
-    color: white;
-    margin-left: 10px;
-
-  }
+  margin-right: 5px;
+}
   
 .icon {
   color: rgb(174, 174, 174);
+  margin-right: 5px;
+  margin-top: -3px;
 }

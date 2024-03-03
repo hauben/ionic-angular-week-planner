@@ -10,7 +10,8 @@
     </ng-template>
     <div>
       <div *ngFor="let todo of todo_items">
-          <todo-item [id]="todo.id" 
+          <todo-item [week]="todo.calendarWeek"
+                     [id]="todo.id" 
                      [title]="(todo.isDurationBased === 0) ? todo.name : parseActivityName(todo.activity)"
                      [isChecked]="todo.isDone" 
                      [hasTimeGoal]="(todo.isDurationBased===1) ? true : false"

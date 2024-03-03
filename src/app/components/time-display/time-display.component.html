@@ -1,12 +1,12 @@
+
 <div class="container">
+  <mat-icon class="icon" >{{  ' sports_score' }} </mat-icon>
+  <div class="time-container">{{ hours2 }}:{{ minutes2 }}:00</div>
 
-  <div class="left-column">
-      <div class="time-container">{{ currentTime }}</div>
-      <div class="time-container">{{ hours2 }}:{{ minutes2 }}:00</div>
-  </div>
+  <mat-icon class="icon" >{{  ' timer' }} </mat-icon>
+  <div class="time-container">{{ achievedTime }}</div>
 
-  <div class="right-column">
-    <mat-icon class="icon" (click)="play_stop()">{{ isTimeRunning ? 'stop' : 'play_arrow' }} </mat-icon>
-  </div>
+  <mat-icon class="icon" (click)="play_stop()">{{ isTimeRunning ? 'stop' : 'play_arrow' }} </mat-icon>
+  <div class="time-container">{{ currentTime }}</div>
+</div>
 
-  </div>

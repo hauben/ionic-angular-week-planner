@@ -1,26 +1,33 @@
-<div class="item-container">
-  <mat-checkbox 
-      class="checkbox" 
-      (change)="onTodoChecked($event)"
-      [checked]="isChecked"
-  ></mat-checkbox>
- 
-  <div class="circle-icon mat-elevation-z2" [style.background-color]="color"></div>
-  
-  <form [formGroup]="reactiveForm">
-        <input class="todo_input_field" matInput [value]="title" formControlName="userInput">
-  </form>
+<div class="container">
+  <div class="item-container">
+      <mat-checkbox 
+          class="checkbox" 
+          (change)="onTodoChecked($event)"
+          [checked]="isChecked"
+      ></mat-checkbox>
+    
+      <div class="circle-icon mat-elevation-z2" [style.background-color]="color"></div>
+      
+      <form [formGroup]="reactiveForm">
+            <input class="todo_input_field" matInput [value]="title" formControlName="userInput">
+      </form>
 
-  <time-display *ngIf="hasTimeGoal"
-    [hours1]="elapsed_hours"
-    [minutes1]="elapsed_minutes"
-    [hours2]="hoursTimeGoal"
-    [minutes2]="minutesTimeGoal"
-  ></time-display>
-
-  <div class="icon-container">
-    <mat-icon class="icon" (click)="edit()"> {{ isInputFieldDisabled ? 'edit' : 'save' }}</mat-icon>
-    <mat-icon class="icon" (click)="delete()">delete</mat-icon>
+      <div class="icon-container">
+        <mat-icon class="icon" (click)="edit()"> {{ isInputFieldDisabled ? 'edit' : 'save' }}</mat-icon>
+        <mat-icon class="icon" (click)="delete()">delete</mat-icon>
+      </div>
   </div>
-
+  <div class="second_row">
+        <time-display *ngIf="hasTimeGoal"
+          [hours1]="elapsed_hours"
+          [minutes1]="elapsed_minutes"
+          [hours2]="hoursTimeGoal"
+          [minutes2]="minutesTimeGoal"
+          [week]="week"
+          [activity]="title"
+          [activity_id]="id"
+          ></time-display>
+  </div>
 </div>
+
+

@@ -29,7 +29,8 @@ export class TodoListItemComponent implements OnInit {
   @Input() hoursTimeGoal: string = '00';
   @Input() minutesTimeGoal: string = '00';
   @Input() color: string = 'white';
-
+  @Input() week: number = 0;
+  
   @Output() deleteItem = new EventEmitter<void>();
   @Output() nameOfTodoChanged: EventEmitter<{ id: number, value: string }> = new EventEmitter();
   @Output() statusOfTodoChanged: EventEmitter<{ id: number, checked: boolean }> = new EventEmitter();

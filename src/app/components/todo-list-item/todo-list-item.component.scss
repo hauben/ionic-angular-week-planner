@@ -1,8 +1,10 @@
 .item-container {
     display: flex;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*border-bottom: 1px solid #ccc;*/
   }
   
   .checkbox {
@@ -23,10 +25,14 @@
   .todo_input_field {
     margin-left: 1em;
     color: white;
-    width: 13vw;
+    width: 20vw;
     font-size: 1.1em;
   }
 
   .icon {
     color: rgb(174, 174, 174);
+  }
+
+  .container {
+   
   }

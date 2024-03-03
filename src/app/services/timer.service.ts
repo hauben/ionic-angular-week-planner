@@ -9,9 +9,8 @@ export class TimerService {
   private minutes: number = 0;
   private hours: number = 0;
 
-  constructor() { }
+  startTimer(): number {
 
-  startTimer(): void {
     this.timer = setInterval(() => {
       this.seconds++;
       if (this.seconds === 60) {
@@ -23,10 +22,13 @@ export class TimerService {
         }
       }
     }, 1000);
+
+    return Date.now();
   }
 
-  stopTimer(): void {
+  stopTimer(): number {
     clearInterval(this.timer);
+    return Date.now();
   }
 
   resetTimer(): void {
