@@ -23,7 +23,8 @@ import {
   isThisMonth,
   isLastWeek,
   isThisYear,
-  isYesterday
+  isYesterday,
+  getWeekOfYear
 } from '../../helpers';
 
 import {
@@ -80,7 +81,7 @@ export class StatsDialogComponent implements OnInit {
       filteredActivities: ActivityEntry[] = [
       ];
 
-      displayedColumns: string[] = ['activity', 'start', 'end', 'duration'];
+      displayedColumns: string[] = ['activity', 'start', 'end', 'week', 'duration'];
       dataSource = new MatTableDataSource<ActivityEntry>([]);
 
       total: string = '00:00';
@@ -99,6 +100,16 @@ export class StatsDialogComponent implements OnInit {
       ngOnInit(): void {
         this.readActivities();
       }
+
+
+      getWeek(startDate: string): number {
+        // given string is e.g: '04.03.2024 16:46'
+        
+        const [datePart] = startDate.split(' ');
+        const [day, month, year] = datePart.split('.');
+
+        return getWeekOfYear(new Date(Number(year), Number(month) - 1, Number(day)));
+      }  
 
 
       private async readTodos(activity: string) {
