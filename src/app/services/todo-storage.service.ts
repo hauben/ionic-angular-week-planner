@@ -4,6 +4,8 @@ import { Storage } from '@ionic/storage-angular';
 
 import { TodoItem } from '../models/todo.model';          // Import the TodoItem model
 import { Activity } from '../models/activity.model';  // Import the Activity model
+import { Session } from '../models/session';
+import { secondsToHhMmSs } from '../helpers';
 
 @Injectable({
   providedIn: 'root',
@@ -74,6 +76,51 @@ export class IonicStorageService {
     const updatedItems = currentItems.map((item) => {
       if (item.id === itemId) {
         return { ...item, ...updatedData };
+      } else {
+        return item;
+      }
+    });
+
+    this.todo_itemsSubject.next(updatedItems);
+    await this.saveTodoItemsToStorage(updatedItems);
+  }
+
+
+  sumUpSessions(itemId: number):string {
+    const currentItems = this.todo_itemsSubject.value;
+    
+    let sum = "00:00:00";
+
+    currentItems.map((item) => {
+      if (item.id === itemId) {        
+        let sumMs = 0;
+
+        item.activity.sessions.forEach( (session:Session) => {
+          sumMs = sumMs + (session.end - session.start)
+        });
+
+        sum =  secondsToHhMmSs(Math.round(sumMs/1000));
+      }
+    });
+
+    return sum;
+  
+  }
+
+  async updateTodoItemByIdWithNewSession(itemId: number, updatedData: Session) {
+    const currentItems = this.todo_itemsSubject.value;
+    
+    const updatedItems = currentItems.map((item) => {
+      if (item.id === itemId) {
+
+        const updatedActivity = {
+            ...item.activity,
+            sessions: [...item.activity.sessions, updatedData]
+        };
+        return {
+            ...item,
+            activity: updatedActivity
+        };
       } else {
         return item;
       }

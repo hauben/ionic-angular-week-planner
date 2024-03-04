@@ -1,6 +1,8 @@
-import { Component, Input, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnDestroy, ChangeDetectorRef, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { TimerService } from '../../services/timer.service';
+import { Session } from 'src/app/models/session';
+import { IonicStorageService } from 'src/app/services/todo-storage.service';
 
 @Component({
   selector: 'time-display',
@@ -11,7 +13,7 @@ import { TimerService } from '../../services/timer.service';
     MatIconModule,
   ]
 })
-export class TimeDisplayComponent implements OnDestroy {
+export class TimeDisplayComponent implements OnDestroy, OnInit {
   // goal timing info
   @Input() hours1: string = '00';
   @Input() minutes1: string = '00';
@@ -36,13 +38,23 @@ export class TimeDisplayComponent implements OnDestroy {
   private endEpocheTimeInMs: number = 0;
 
   constructor(private timerService: TimerService, 
-              private cdr: ChangeDetectorRef) { 
-              
+              private cdr: ChangeDetectorRef,
+              private ionicStorageService: IonicStorageService) {               
+  }
+
+  ngOnInit(): void {
+      console.log("ngOnInit")
+      this.achievedTime =  this.ionicStorageService.sumUpSessions(this.activity_id);  // sum-up session time
   }
 
   private saveRecord() {
-    
-    console.log(`Start time: ${this.startEpocheTimeInMs} End time: ${this.endEpocheTimeInMs} week:${this.week} activity: ${this.activity} activity_id: ${this.activity_id}`)
+    let recordedSession:Session = {
+      start: this.startEpocheTimeInMs,
+      end: this.endEpocheTimeInMs
+    }
+
+    this.ionicStorageService.updateTodoItemByIdWithNewSession(this.activity_id, recordedSession);  // save session
+    this.ionicStorageService.sumUpSessions(this.activity_id);  // sum-up session time
   }
 
   play_stop() {
@@ -75,6 +87,4 @@ export class TimeDisplayComponent implements OnDestroy {
     clearInterval(this.interval);
   }
   
-
-
 }
