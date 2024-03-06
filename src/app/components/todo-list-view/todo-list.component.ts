@@ -63,7 +63,9 @@ export class TodoListComponent {
   showAddTodoDialog() {
       const dialogRef = this.dialog.open(AddTodoDialogComponent, {
         height: '700px',
-        width: '700px',
+        width: '98vw',
+        maxWidth: '100vw',
+        maxHeight: '100vh',
         data: { week: this.week}
       });
 
@@ -76,7 +78,9 @@ export class TodoListComponent {
   statsClicked() {
     const dialogRef = this.dialog.open(StatsDialogComponent, {
       height: '700px',
-      width: '700px',
+      width: '98vw',
+      maxWidth: '100vw',
+      maxHeight: '100vh',
       data: { week: this.week}
     });
 

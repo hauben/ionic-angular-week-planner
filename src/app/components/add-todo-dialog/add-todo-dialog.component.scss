@@ -1,123 +1,129 @@
 .add-todo-dialog {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #4d4d4d;
-    text-align: center;
-  }
-
-  .top_row_container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-
-  .headline {
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.5em;
-    margin-bottom: 1em;
-  }
-
-  .color-assignment-container, .duration-container, .activity-container {
-    width: 100%;
-    padding: 10px; 
-  }
-
-  .color-assignment-container {
-    margin-top: 1em;
-  }
-  
-  .color-assignment-container, .duration-container {
-    border-top: 1px solid #ffffff; /* Add a top border */
-    border-bottom: 1px solid #ffffff; /* Add a bottom border */
-  }
-
-  .activity-container {
-    text-align: left;
-  }
-
-  .select-activity-container {
-    margin-top: 1em;
-    border-bottom: 1px solid #ffffff; /* Add a bottom border */
-  }
-  
-  .title {
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.0em;
-    text-align: left !important;
-    margin-bottom: 1em;
-  }
-  
-  .color-circles {
-    display: flex;
-    gap: 10px; /* Adjust the gap between circles as needed */
-  }
-  
-  .color-circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-  }
-  
-  .blue { background-color: blue; }
-  .black { background-color: black; }
-  .green { background-color: green; }
-  .yellow { background-color: yellow; }
-  .red { background-color: red; }
-  .white { background-color: white; }
-
-  .selected {
-    border: 3px solid #333; /* Add a border to indicate selection */
-  }
-  
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #4d4d4d;
+  text-align: center;
+}
 
 
-  .time-goal-container {
-    width: 100%;
-    margin-top:1em; 
-    padding-bottom: 10px; 
-    padding-left: 10px; 
-  }
-  
+.top_row_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
 
-  
-  .time-inputs {
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Adjust the gap between inputs as needed */
-  }
-  
-  .time-inputs input {
-    width: 50px; /* Adjust the input width as needed */
-    padding: 5px; /* Adjust the input padding as needed */
-    text-align: center;
-  }
+.headline {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
 
-  .radio-buttons {
-    text-align: left;
-  }
+.text {
+  color: white;
+}
 
-  .activity-form-field {
-    width: 100%;
-  }
+.color-assignment-container, .duration-container, .activity-container {
+  width: 100%;
+  padding: 10px; 
+}
 
-  .description-container {
-    margin-top: 1em;
-    padding-left: 10px; 
-  }
+.color-assignment-container {
+  margin-top: 1em;
+}
 
-  .error_message_activity {
-    color: red;
-    margin-bottom: 1em;
-    font-weight: bold;
-    margin-left: 1em;
-  }
+.color-assignment-container, .duration-container {
+  border-top: 1px solid #ffffff; /* Add a top border */
+  border-bottom: 1px solid #ffffff; /* Add a bottom border */
+}
 
-  button {
-    background-color: #ffa600;
-    width: 40px;
-    height: 40px;
-  }
+.activity-container {
+  text-align: left;
+}
+
+.select-activity-container {
+  margin-top: 1em;
+  border-bottom: 1px solid #ffffff; /* Add a bottom border */
+}
+
+.title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.0em;
+  text-align: left !important;
+  margin-bottom: 1em;
+}
+
+.color-circles {
+  display: flex;
+  gap: 10px; /* Adjust the gap between circles as needed */
+}
+
+.color-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.blue { background-color: blue; }
+.black { background-color: black; }
+.green { background-color: green; }
+.yellow { background-color: yellow; }
+.red { background-color: red; }
+.white { background-color: white; }
+
+.selected {
+  border: 3px solid #333; /* Add a border to indicate selection */
+}
+
+
+
+.time-goal-container {
+  width: 100%;
+  margin-top:1em; 
+  padding-bottom: 10px; 
+  padding-left: 10px; 
+}
+
+
+
+.time-inputs {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Adjust the gap between inputs as needed */
+}
+
+.time-inputs input {
+  width: 50px; /* Adjust the input width as needed */
+  padding: 5px; /* Adjust the input padding as needed */
+  text-align: center;
+}
+
+.radio-buttons {
+  text-align: left;
+}
+
+.activity-form-field {
+  width: 100%;
+}
+
+.description-container {
+  margin-top: 1em;
+  padding-left: 10px; 
+}
+
+.error_message_activity {
+  color: red;
+  margin-bottom: 1em;
+  font-weight: bold;
+  margin-left: 1em;
+}
+
+button {
+  background-color: #ffa600;
+  width: 40px;
+  height: 40px;
+}
 
