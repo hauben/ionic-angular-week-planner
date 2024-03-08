@@ -14,7 +14,6 @@ import { Activity } from '../../models/activity.model';
 import { Session } from '../../models/session';
 
 import {
-  secondsToDateString, 
   calculateDuration,
   secondsToHhMmSs,
   isToday,
@@ -24,7 +23,9 @@ import {
   isLastWeek,
   isThisYear,
   isYesterday,
-  getWeekOfYear
+  getWeekOfYear,
+  secondsToDateStringNoYear,
+  secondsToDateString
 } from '../../helpers';
 
 import {
@@ -104,7 +105,7 @@ export class StatsDialogComponent implements OnInit {
 
       getWeek(startDate: string): number {
         // given string is e.g: '04.03.2024 16:46'
-        
+
         const [datePart] = startDate.split(' ');
         const [day, month, year] = datePart.split('.');
 
@@ -132,8 +133,9 @@ export class StatsDialogComponent implements OnInit {
             
               let entry = {
                 activity: time_based_todo_item.activity.name,
-                start: secondsToDateString(session.start),
-                end: secondsToDateString(session.end),
+                startWithYear: secondsToDateString(session.start),
+                start: secondsToDateStringNoYear(session.start),
+                end: secondsToDateStringNoYear(session.end),
                 duration: calculateDuration(session.start, session.end)
               }
 
@@ -191,8 +193,9 @@ export class StatsDialogComponent implements OnInit {
               if (criteria(session)) {
                   let entry = {
                       activity: item.activity.name,
-                      start: secondsToDateString(session.start),
-                      end: secondsToDateString(session.end),
+                      start: secondsToDateStringNoYear(session.start),
+                      startWithYear: secondsToDateString(session.start),
+                      end: secondsToDateStringNoYear(session.end),
                       duration: calculateDuration(session.start, session.end)
                   };
   

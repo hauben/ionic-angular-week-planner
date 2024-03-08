@@ -2,10 +2,8 @@
 
 
 ion-content {
-  --background: rgb(0,0,0);
   --background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(62,62,62,1) 50%, rgba(0,0,0,1) 100%);
   --padding-top:15vh;
- 
 }
 
 
@@ -37,15 +35,19 @@ ion-content {
 }
 
 
-.hex-text {
+.hex-text, .hex-text-about {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 1.5vh;
+  font-size: 1.8vh;
   color: #fff;
   cursor: pointer;
   user-select: none;
+}
+
+.hex-text-about {
+  font-size: 2vh;
 }
 
 .currentCalendarWeek {
@@ -66,4 +68,8 @@ h1 {
   text-align: center;
   font-family: 'Raleway', sans-serif;
   font-size: 2em;
+  color: white;
+  background: #181818;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }

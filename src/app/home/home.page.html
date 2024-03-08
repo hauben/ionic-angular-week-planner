@@ -1,7 +1,7 @@
-<h1>Calendar Week Planer</h1> 
+<h1 *ngIf="!showTodoList">Calendar Week Planer</h1> 
 <ion-content class="ion-no-padding">
  
-    <div (click)="showAboutPage()" class="bottom-hexagon"><div class="hex-text">?!</div></div>
+    <div *ngIf="!showTodoList" (click)="showAboutPage()" class="bottom-hexagon"><div class="hex-text-about">?!</div></div>
 
     <div *ngIf="!showTodoList"class="hex-container">
          
@@ -42,6 +42,7 @@
     </div>
 
   <app-todo-list
+    class="todo-list"
     *ngIf="showTodoList"
     [year]="selectedYear"
     [week]="selectedWeek"

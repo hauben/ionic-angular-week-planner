@@ -1,16 +1,15 @@
 /* todo-list.component.css */
 
 .todo-list {
-    max-width: 600px;
-    margin: 0 auto;
+    margin-left: 5px;
+    margin-right: 5px;
     padding: 20px;
     background-color: #4d4d4d;
     border-radius: 8px;
     border-top-right-radius: 50px;
     border-bottom-left-radius: 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding-bottom: 4em;
-    margin-top: -5em;
+    margin-top: -2em;
   }
   
   h2 {
@@ -34,7 +33,6 @@
     margin-right: 10px;
   }
   
-  /* Adjust the button's height to match the input */
   button {
     color: #fff;
     border: none;
@@ -46,9 +44,9 @@
     transition: background-color 0.3s;
   }
   
-  button:hover {
+  /*button:hover {
     background-color: #c68205;
-  }
+  }*/
   
   ul {
     list-style-type: none;

@@ -66,7 +66,8 @@ export class TodoListComponent {
         width: '98vw',
         maxWidth: '100vw',
         maxHeight: '100vh',
-        data: { week: this.week}
+        data: { week: this.week},
+        panelClass: 'dialog-panel'
       });
 
       dialogRef.afterClosed().subscribe(result => {
@@ -81,7 +82,8 @@ export class TodoListComponent {
       width: '98vw',
       maxWidth: '100vw',
       maxHeight: '100vh',
-      data: { week: this.week}
+      data: { week: this.week},
+      panelClass: 'dialog-panel'
     });
 
     dialogRef.afterClosed().subscribe(result => {

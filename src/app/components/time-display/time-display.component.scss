@@ -1,15 +1,20 @@
 .container {
   display: flex;
-  margin-left: 5.3em;
+  margin-left: 20px;
   color: white;
 }
-
-.time-container {
-  margin-right: 5px;
-}
-  
+ 
 .icon {
   color: rgb(174, 174, 174);
   margin-right: 5px;
   margin-top: -3px;
+}
+
+
+.time-container {
+  margin-right: 15px;
+}
+
+.achievedTime {
+  margin-left: 5px;
 }

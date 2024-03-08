@@ -4,7 +4,7 @@
   <div class="time-container">{{ hours2 }}:{{ minutes2 }}:00</div>
 
   <mat-icon class="icon" >{{  ' timer' }} </mat-icon>
-  <div class="time-container">{{ achievedTime }}</div>
+  <div class="time-container achievedTime">{{ achievedTime }}</div>
 
   <mat-icon class="icon" (click)="play_stop()">{{ isTimeRunning ? 'stop' : 'play_arrow' }} </mat-icon>
   <div class="time-container">{{ currentTime }}</div>
