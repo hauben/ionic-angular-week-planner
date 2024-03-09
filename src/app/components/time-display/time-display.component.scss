@@ -1,7 +1,8 @@
 .container {
   display: flex;
-  margin-left: 20px;
+  justify-content: space-between;
   color: white;
+  margin-top: 5px;
 }
  
 .icon {
@@ -15,6 +16,3 @@
   margin-right: 15px;
 }
 
-.achievedTime {
-  margin-left: 5px;
-}

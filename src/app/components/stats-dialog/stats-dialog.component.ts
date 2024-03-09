@@ -82,7 +82,7 @@ export class StatsDialogComponent implements OnInit {
       filteredActivities: ActivityEntry[] = [
       ];
 
-      displayedColumns: string[] = ['activity', 'start', 'end', 'week', 'duration'];
+      displayedColumns: string[] = ['start', 'end', 'week', 'duration'];
       dataSource = new MatTableDataSource<ActivityEntry>([]);
 
       total: string = '00:00';
