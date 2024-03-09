@@ -8,7 +8,7 @@
         <span>All</span>
       </div>
     </ng-template>
-    <div>
+    <div class="items_container">
       <div *ngFor="let todo of todo_items">
           <todo-item [week]="todo.calendarWeek"
                      [id]="todo.id" 
@@ -24,7 +24,6 @@
           </todo-item>
       </div>
     </div>
-    <ng-template #loadingItems>Loading items...</ng-template>
   </mat-tab>
 
 
@@ -35,18 +34,20 @@
         <span>Open</span>
       </div>
     </ng-template>
-    <div *ngFor="let todo of todo_items">
-        <div *ngIf="!todo.isDone">
-          <todo-item [id]="todo.id" 
-                     [title]="(todo.isDurationBased === 0) ? todo.name : parseActivityName(todo.activity)"
-                     [isChecked]="todo.isDone" 
-                     [hasTimeGoal]="(todo.isDurationBased===1) ? true : false"
-                     [color]="todo.color"
-                     (deleteItem)="onDeleteItem(todo.id)"  
-                     (nameOfTodoChanged)="onNameOfTodoChanged($event)"
-                     (statusOfTodoChanged)="onStatusOfTodoChanged($event)">
-          </todo-item>
-        </div>
+    <div class="items_container">
+      <div *ngFor="let todo of todo_items">
+          <div *ngIf="!todo.isDone">
+            <todo-item [id]="todo.id" 
+                      [title]="(todo.isDurationBased === 0) ? todo.name : parseActivityName(todo.activity)"
+                      [isChecked]="todo.isDone" 
+                      [hasTimeGoal]="(todo.isDurationBased===1) ? true : false"
+                      [color]="todo.color"
+                      (deleteItem)="onDeleteItem(todo.id)"  
+                      (nameOfTodoChanged)="onNameOfTodoChanged($event)"
+                      (statusOfTodoChanged)="onStatusOfTodoChanged($event)">
+            </todo-item>
+          </div>
+      </div>
     </div>
   </mat-tab>
 
@@ -58,17 +59,19 @@
         <span>Done</span>
       </div>
     </ng-template>
-    <div *ngFor="let todo of todo_items">
-      <div *ngIf="todo.isDone">
-        <todo-item [id]="todo.id" 
-                     [title]="(todo.isDurationBased === 0) ? todo.name : parseActivityName(todo.activity)"
-                     [isChecked]="todo.isDone" 
-                     [hasTimeGoal]="(todo.isDurationBased===1) ? true : false"
-                     [color]="todo.color"
-                     (deleteItem)="onDeleteItem(todo.id)"  
-                     (nameOfTodoChanged)="onNameOfTodoChanged($event)"
-                     (statusOfTodoChanged)="onStatusOfTodoChanged($event)">
-          </todo-item>
+    <div class="items_container">
+      <div *ngFor="let todo of todo_items">
+        <div *ngIf="todo.isDone">
+          <todo-item [id]="todo.id" 
+                      [title]="(todo.isDurationBased === 0) ? todo.name : parseActivityName(todo.activity)"
+                      [isChecked]="todo.isDone" 
+                      [hasTimeGoal]="(todo.isDurationBased===1) ? true : false"
+                      [color]="todo.color"
+                      (deleteItem)="onDeleteItem(todo.id)"  
+                      (nameOfTodoChanged)="onNameOfTodoChanged($event)"
+                      (statusOfTodoChanged)="onStatusOfTodoChanged($event)">
+            </todo-item>
+        </div>
       </div>
     </div>
   </mat-tab>
