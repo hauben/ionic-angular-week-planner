@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./resources/android/icon/drawable-xxxhdpi-icon.png"/ style="border-radius: 50%">
+<img src="app-screenshots/app-icon.png"/>
 </p>
 <br/>
 

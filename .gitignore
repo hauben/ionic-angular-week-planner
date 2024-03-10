@@ -68,6 +68,5 @@ testem.log
 Thumbs.db
 
 TODOS.md
-resources/android/**/*
 
 package-lock.json
