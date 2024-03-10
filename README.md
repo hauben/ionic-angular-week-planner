@@ -1,5 +1,5 @@
 <p align="center">
-<img src="resources/android/icon/drawable-xxxhdpi-icon.png"/ style="border-radius: 50%">
+<img src="./resources/android/icon/drawable-xxxhdpi-icon.png"/ style="border-radius: 50%">
 </p>
 <br/>
 
@@ -40,9 +40,9 @@ You'll then have the flexibility to add (by clicking the plus symbol):
 | -------- | ------- |
 | ![New Todo Screenshot](app-screenshots/new_todo.png)  | ![New Activity with time goal ](app-screenshots/new_todo_with_duration_goal_choose_exisiting_activity.png)   |
 
-**Todo Overview**
+**Time-based Activities**
 
-After setting up your todos or time-based activities you can monitor them in the weeks overview page. This feature lets you manage your time effectively for various activities. Here's how it works:
+After setting a time-based activitiy you can monitor it in the weeks overview page. This feature lets you manage your time effectively for various activities. Here's how it works:
 
 - Start/Stop Button: Use this button to track the time you spend on an activity. Start the timer when you begin and stop it when you finish.
 
