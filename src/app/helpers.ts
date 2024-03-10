@@ -27,15 +27,19 @@ export function getWeekOfYear(date: Date): number {
 }
 
 
-export function secondsToDateString(milliseconds: number): string {
-    const date = new Date(milliseconds);
+export function secondsToDateString(milliseconds: number, includeYear = false): string {
+    const date = new Date(milliseconds); 
+  
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0'); // January is 0
-    const year = date.getFullYear();
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
-    return `${day}.${month}.${year} ${hours}:${minutes}`;
-}
+  
+    const formattedDate = `${day}.${month}`;
+    const formattedTime = `${hours}:${minutes}`;
+  
+    return includeYear ? `${formattedDate}.${date.getFullYear()} ${formattedTime}` : `${formattedDate} ${formattedTime}`;
+  }
 
 
 export function calculateDuration(start: number, end:number) : string {

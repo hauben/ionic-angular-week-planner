@@ -19,11 +19,64 @@ This application is based on the [Ionic Framework 7](https://ionicframework.com/
 
 ![Activity Tracker Screenshot](app-screenshots/main_screen.png)
 
-Getting started is easy. From the main screen, simply choose the week you want to plan.  You'll then have the flexibility to add:
+
+**Adding a todo or time-based activity**
+
+Getting started is easy. From the main screen, simply choose the week you want to plan.  
+
+| Todo with no time goal    | Activity with time goal |
+| -------- | ------- |
+| ![Activity timer running](app-screenshots/activity_running.png)  | ![Activity timer stopped ](app-screenshots/activity_stopped.png)   |
+
+You'll then have the flexibility to add (by clicking the plus symbol):
 
 - Simple to-dos: Perfect for tasks that don't require a specific time commitment.
 
-- Time-based activities: Schedule activities like jogging or reading, and set a time goal for the correspondig week to stay on track.
+- Time-based activities: Schedule activities like jogging or reading, and set a time goal for the correspondig week to stay on track. You can either create a new activity or choose an exisiting one.
+
+- For both types of todos (time based or not) you can pick a color and assign it.
+
+| Todo with no time goal    | Activity with time goal |
+| -------- | ------- |
+| ![New Todo Screenshot](app-screenshots/new_todo.png)  | ![New Activity with time goal ](app-screenshots/new_todo_with_duration_goal_choose_exisiting_activity.png)   |
+
+**Todo Overview**
+
+After setting up your todos or time-based activities you can monitor them in the weeks overview page. This feature lets you manage your time effectively for various activities. Here's how it works:
+
+- Start/Stop Button: Use this button to track the time you spend on an activity. Start the timer when you begin and stop it when you finish.
+
+**Goal Tracking:**
+
+![Activity timer info](app-screenshots/activity_stopped_time_infos.png)
+
+- The left column (flag symbol) displays your goal for that activity within the current week.
+
+- The middle column shows the total time you've already booked for that activity this week.
+
+- Active Timer: The right column indicates if you currently have a timer running for that specific activity.
+
+
+**Calendar Week Time-based Activity Statistic:**
+
+To have a better overview of your time-based activities you can look into the statistics overview by clicking the stats button in the calendar week overview.
+
+![Buttons](app-screenshots/week_control_buttons.png)
+
+The statistics overview lets you analyze your time usage. You can select a specific activity and then apply a time range filter. This will show you the total amount of time you spent on that activity within the chosen timeframe. 
+
+![Activity timer info](app-screenshots/statistics_overview.png)
+
+The following time filters can be applied:
+ - Today
+ - Yesterday
+ - This Week
+ - Last Week
+ - This Month
+ - Last Month
+ - All
+
+ **Note: The stats overview can be used independently of the current selected week.**
 
 ## How to get this app running ?
 The fastest way to get the app running is probably on a PC. 

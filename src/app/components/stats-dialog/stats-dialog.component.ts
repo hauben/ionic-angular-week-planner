@@ -24,7 +24,6 @@ import {
   isThisYear,
   isYesterday,
   getWeekOfYear,
-  secondsToDateStringNoYear,
   secondsToDateString
 } from '../../helpers';
 
@@ -133,9 +132,9 @@ export class StatsDialogComponent implements OnInit {
             
               let entry = {
                 activity: time_based_todo_item.activity.name,
-                startWithYear: secondsToDateString(session.start),
-                start: secondsToDateStringNoYear(session.start),
-                end: secondsToDateStringNoYear(session.end),
+                startWithYear: secondsToDateString(session.start, true),
+                start: secondsToDateString(session.start),
+                end: secondsToDateString(session.end),
                 duration: calculateDuration(session.start, session.end)
               }
 
@@ -193,9 +192,9 @@ export class StatsDialogComponent implements OnInit {
               if (criteria(session)) {
                   let entry = {
                       activity: item.activity.name,
-                      start: secondsToDateStringNoYear(session.start),
-                      startWithYear: secondsToDateString(session.start),
-                      end: secondsToDateStringNoYear(session.end),
+                      start: secondsToDateString(session.start),
+                      startWithYear: secondsToDateString(session.start, true),
+                      end: secondsToDateString(session.end),
                       duration: calculateDuration(session.start, session.end)
                   };
   
